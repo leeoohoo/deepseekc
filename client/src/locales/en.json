@@ -459,7 +459,6 @@
       "noAccount": "Don't have an account?",
       "createAccount": "Create account"
     },
-    "demoNote": "For demo purposes, you can use any email address. The verification code will be logged in the server console.",
     "errors": {
       "emailRequired": "Email is required",
       "invalidEmail": "Invalid email format",
@@ -499,7 +498,6 @@
       "hasAccount": "Already have an account?",
       "signIn": "Sign in"
     },
-    "demoNote": "For demo purposes, you can use any email address. The verification code will be logged in the server console.",
     "errors": {
       "emailRequired": "Email is required",
       "invalidEmail": "Invalid email format",

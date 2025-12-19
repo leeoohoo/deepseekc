@@ -220,7 +220,7 @@
     "settingPages": {
       "configuration": {
         "title": "Configuration",
-        "subtitle": "System Configuration",
+        "subtitle": "Model Management",
         "description": "Centralized configuration interface for managing model parameters, MCP servers, and sub-agent settings.",
         "features": [
           "Model parameter settings",
@@ -231,7 +231,7 @@
       },
       "appearance": {
         "title": "Appearance",
-        "subtitle": "UI Appearance Settings",
+        "subtitle": "MCP Server Management",
         "description": "Customize the interface theme, layout, and visual preferences.",
         "features": [
           "Theme selection",
@@ -242,7 +242,7 @@
       },
       "shortcuts": {
         "title": "Shortcuts",
-        "subtitle": "Keyboard Shortcuts",
+        "subtitle": "Sub-agents Management",
         "description": "Manage and customize keyboard shortcuts for quick access to frequently used functions.",
         "features": [
           "Shortcut customization",
@@ -459,7 +459,6 @@
       "noAccount": "Don't have an account?",
       "createAccount": "Create account"
     },
-    "demoNote": "For demo purposes, you can use any email address. The verification code will be logged in the server console.",
     "errors": {
       "emailRequired": "Email is required",
       "invalidEmail": "Invalid email format",
@@ -497,9 +496,8 @@
     },
     "links": {
       "hasAccount": "Already have an account?",
-      "signIn": "Sign in"
+      "signIn": "Sign in",
     },
-    "demoNote": "For demo purposes, you can use any email address. The verification code will be logged in the server console.",
     "errors": {
       "emailRequired": "Email is required",
       "invalidEmail": "Invalid email format",

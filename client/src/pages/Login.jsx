@@ -104,6 +104,7 @@ const Login = () => {
         // Store token in localStorage
         localStorage.setItem('token', data.token);
         localStorage.setItem('user', JSON.stringify(data.user));
+        window.dispatchEvent(new CustomEvent('loginSuccess'));
         
         setMessage({ type: 'success', text: 'Login successful! Redirecting...' });
         
@@ -288,6 +289,13 @@ const Login = () => {
               <Link to="/register" className="text-primary-400 hover:text-primary-300 font-medium">
                 Create account
               </Link>
+            </p>
+          </div>
+
+          {/* Demo note */}
+          <div className="mt-6 p-4 bg-dark-800/30 rounded-lg border border-dark-800">
+            <p className="text-sm text-dark-400 text-center">
+              For demo purposes, you can use any email address. The verification code will be logged in the server console.
             </p>
           </div>
 

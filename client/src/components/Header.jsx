@@ -22,20 +22,49 @@ export default function Header() {
 
   // 检查用户登录状态
   useEffect(() => {
-    const token = localStorage.getItem('token')
-    const userData = localStorage.getItem('user')
-    
-    if (token && userData) {
-      try {
-        setUser(JSON.parse(userData))
-      } catch (error) {
-        console.error('Failed to parse user data:', error)
-        localStorage.removeItem('token')
-        localStorage.removeItem('user')
+    const checkUserStatus = () => {
+      const token = localStorage.getItem('token')
+      const userData = localStorage.getItem('user')
+      
+      if (token && userData) {
+        try {
+          setUser(JSON.parse(userData))
+        } catch (error) {
+          console.error('Failed to parse user data:', error)
+          localStorage.removeItem('token')
+          localStorage.removeItem('user')
+          setUser(null)
+        }
+      } else {
+        setUser(null)
       }
     }
-  }, [])
 
+    // 初始检查
+    checkUserStatus()
+
+    // 监听storage变化事件
+    const handleStorageChange = (e) => {
+      if (e.key === 'token' || e.key === 'user') {
+        checkUserStatus()
+      }
+    }
+
+    // 监听自定义登录成功事件
+    const handleLoginSuccess = () => {
+      checkUserStatus()
+    }
+
+    // 添加事件监听器
+    window.addEventListener('storage', handleStorageChange)
+    window.addEventListener('loginSuccess', handleLoginSuccess)
+
+    // 清理函数
+    return () => {
+      window.removeEventListener('storage', handleStorageChange)
+      window.removeEventListener('loginSuccess', handleLoginSuccess)
+    }
+  }, [])
   // 登出功能
   const handleLogout = () => {
     localStorage.removeItem('token')
