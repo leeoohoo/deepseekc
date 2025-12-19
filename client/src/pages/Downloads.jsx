@@ -24,7 +24,7 @@ const Downloads = () => {
       id: 'macos-arm64',
       name: t('downloads.downloads.macosArm64.name'),
       icon: <Apple className="w-10 h-10" />,
-      file: 'dist-macos-arm64.zip',
+      file: 'https://github.com/leeoohoo/deepseek_cli/releases/download/1.0.5.1_tag/Deepseek.UI-0.1.1-mac-arm64.dmg',
       size: '~285 MB',
       requirements: t('downloads.downloads.macosArm64.requirements'),
       color: 'from-blue-500 to-cyan-500',
@@ -34,7 +34,7 @@ const Downloads = () => {
       id: 'macos-x64',
       name: t('downloads.downloads.macosX64.name'),
       icon: <Apple className="w-10 h-10" />,
-      file: 'dist-macos-x64.zip',
+      file: 'https://github.com/leeoohoo/deepseek_cli/releases/download/1.0.5.1_tag/Deepseek.UI-0.1.1-mac-x64.dmg',
       size: '~295 MB',
       requirements: t('downloads.downloads.macosX64.requirements'),
       color: 'from-purple-500 to-pink-500',
@@ -44,7 +44,7 @@ const Downloads = () => {
       id: 'windows-x64',
       name: t('downloads.downloads.windowsX64.name'),
       icon: <Monitor className="w-10 h-10" />,
-      file: 'dist-windows-x64.zip',
+      file: 'https://github.com/leeoohoo/deepseek_cli/releases/download/1.0.5.1_tag/Deepseek.UI-0.1.1-win-x64.exe',
       size: '~355 MB',
       requirements: t('downloads.downloads.windowsX64.requirements'),
       color: 'from-emerald-500 to-green-500',
@@ -172,7 +172,7 @@ const Downloads = () => {
                 </div>
                 
                 <a
-                 href={`http://localhost:3001/doc/${item.file}`}
+                  href={item.file}
                   className="btn-primary w-full inline-flex items-center justify-center gap-2 py-4"
                   download
                 >
