@@ -1,0 +1,136 @@
+<svg width="800" height="500" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+    <linearGradient id="panel-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#334155" />
+    </linearGradient>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+      .text { font-family: 'Inter', sans-serif; fill: #f1f5f9; font-size: 12px; }
+      .text-title { font-family: 'Inter', sans-serif; fill: #f1f5f9; font-size: 14px; font-weight: 600; }
+      .text-label { font-family: 'Inter', sans-serif; fill: #94a3b8; font-size: 11px; }
+      .text-code { font-family: 'JetBrains Mono', monospace; fill: #f1f5f9; font-size: 11px; }
+      .text-highlight { font-family: 'Inter', sans-serif; fill: #6366f1; font-size: 11px; font-weight: 600; }
+      .annotation-box { fill: #334155; stroke: #475569; stroke-width: 1; rx: 6; ry: 6; }
+      .annotation-text { font-family: 'Inter', sans-serif; fill: #f1f5f9; font-size: 11px; font-weight: 600; }
+      .file-modified { fill: #f59e0b; }
+      .file-added { fill: #10b981; }
+      .file-deleted { fill: #ef4444; }
+    </style>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="800" height="500" fill="url(#bg-gradient)" />
+
+  <!-- 顶部标题 -->
+  <rect x="0" y="0" width="800" height="50" fill="#1e293b" stroke="#475569" stroke-width="1" />
+  <g class="text-title">
+    <text x="20" y="30">文件浏览器</text>
+    <text x="700" y="30" class="text-label">/Users/project/src</text>
+  </g>
+
+  <!-- 左侧目录树 -->
+  <rect x="0" y="50" width="250" height="400" fill="url(#panel-gradient)" stroke="#475569" stroke-width="1" />
+  <text x="20" y="80" class="text-title">目录树</text>
+  
+  <!-- 目录结构 -->
+  <g class="text-code">
+    <text x="30" y="110">📁 src</text>
+    <text x="40" y="135">📁 components</text>
+    <text x="50" y="160" class="file-added">+ Button.js</text>
+    <text x="50" y="185">- Modal.js</text>
+    <text x="50" y="210">📁 utils</text>
+    <text x="40" y="235">📁 hooks</text>
+    <text x="50" y="260">- useAuth.js</text>
+    <text x="50" y="285" class="file-modified">* useFetch.js</text>
+    <text x="30" y="310">📁 pages</text>
+    <text x="40" y="335">- Home.js</text>
+    <text x="40" y="360" class="file-modified">* Dashboard.js</text>
+    <text x="30" y="385">📁 assets</text>
+    <text x="30" y="410">📄 package.json</text>
+    <text x="30" y="435" class="file-deleted">- README.md</text>
+  </g>
+
+  <!-- 右侧文件预览区 -->
+  <rect x="250" y="50" width="550" height="350" fill="#0f172a" stroke="#475569" stroke-width="1" />
+  <text x="260" y="80" class="text-title">文件预览: src/components/Button.js</text>
+  
+  <!-- 代码高亮显示 -->
+  <rect x="260" y="90" width="530" height="300" fill="#0f172a" rx="6" />
+  <g class="text-code">
+    <text x="270" y="115" fill="#818cf8">import</text>
+    <text x="330" y="115" fill="#f1f5f9">React</text>
+    <text x="380" y="115" fill="#818cf8">from</text>
+    <text x="420" y="115" fill="#10b981">'react'</text>
+    <text x="270" y="140" fill="#818cf8">import</text>
+    <text x="330" y="140" fill="#f1f5f9"> PropTypes</text>
+    <text x="410" y="140" fill="#818cf8">from</text>
+    <text x="450" y="140" fill="#10b981">'prop-types'</text>
+    <text x="270" y="165"></text>
+    <text x="270" y="190" fill="#818cf8">const</text>
+    <text x="320" y="190" fill="#f1f5f9"> Button</text>
+    <text x="380" y="190" fill="#818cf8"> =</text>
+    <text x="400" y="190" fill="#f1f5f9"> ({</text>
+    <text x="440" y="190" fill="#f1f5f9"> children</text>
+    <text x="510" y="190" fill="#f1f5f9">, onClick</text>
+    <text x="580" y="190" fill="#f1f5f9"> })</text>
+    <text x="610" y="190" fill="#818cf8"> =&gt;</text>
+    <text x="270" y="215" fill="#f1f5f9">  </text>
+    <text x="290" y="215" fill="#818cf8">return</text>
+    <text x="350" y="215" fill="#f1f5f9"> (</text>
+    <text x="270" y="240" fill="#f1f5f9">    &lt;button</text>
+    <text x="270" y="265" fill="#f1f5f9">      className=</text>
+    <text x="390" y="265" fill="#10b981">"btn-primary"</text>
+    <text x="270" y="290" fill="#f1f5f9">      onClick=</text>
+    <text x="350" y="290" fill="#f1f5f9">{onClick}</text>
+    <text x="270" y="315" fill="#f1f5f9">    &gt;</text>
+    <text x="270" y="340" fill="#f1f5f9">      {children}</text>
+    <text x="270" y="365" fill="#f1f5f9">    &lt;/button&gt;</text>
+    <text x="270" y="390" fill="#f1f5f9">  )</text>
+    <text x="270" y="415" fill="#f1f5f9">}</text>
+  </g>
+
+  <!-- 底部变更记录面板 -->
+  <rect x="0" y="450" width="800" height="50" fill="#334155" stroke="#475569" stroke-width="1" />
+  <text x="20" y="475" class="text-title">变更记录</text>
+  <g class="text-code">
+    <text x="150" y="475">[+] Added: src/components/Button.js</text>
+    <text x="400" y="475">[*] Modified: src/hooks/useFetch.js</text>
+    <text x="650" y="475">[-] Deleted: README.md</text>
+  </g>
+
+  <!-- 标注：目录树 -->
+  <g class="annotation">
+    <rect x="10" y="120" width="70" height="30" class="annotation-box" />
+    <text x="20" y="140" class="annotation-text">目录树</text>
+    <path d="M80,135 L250,135" stroke="#6366f1" stroke-width="2" fill="none" />
+  </g>
+
+  <!-- 标注：变更高亮 -->
+  <g class="annotation">
+    <rect x="40" y="155" width="80" height="20" class="annotation-box" />
+    <text x="50" y="170" class="annotation-text">新增文件</text>
+    <path d="M80,155 L80,145 L50,145 L50,160" stroke="#10b981" stroke-width="2" fill="none" />
+  </g>
+
+  <!-- 标注：文件预览 -->
+  <g class="annotation">
+    <rect x="400" y="200" width="80" height="30" class="annotation-box" />
+    <text x="410" y="220" class="annotation-text">代码高亮</text>
+    <path d="M440,200 L440,190 L350,190 L350,115" stroke="#6366f1" stroke-width="2" fill="none" />
+  </g>
+
+  <!-- 标注：变更记录 -->
+  <g class="annotation">
+    <rect x="600" y="430" width="90" height="30" class="annotation-box" />
+    <text x="610" y="450" class="annotation-text">变更记录</text>
+    <path d="M645,430 L645,420 L400,420 L400,450" stroke="#6366f1" stroke-width="2" fill="none" />
+  </g>
+
+  <!-- 水印 -->
+  <text x="750" y="490" class="text-label" text-anchor="end">DeepSeek CLI File Browser</text>
+</svg>

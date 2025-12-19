@@ -1,0 +1,11 @@
+--- Docs.jsx
++++ Docs.jsx
+@@ -471,7 +471,7 @@
+               </div>
+               
+               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                 <div>
+                   <h3 className="font-bold text-white mb-4 flex items-center gap-2">
+                     <Terminal className="w-5 h-5" />
+-                    Main Agent Tools
++                    {t('docs.mcpTools.mainAgentTools')}

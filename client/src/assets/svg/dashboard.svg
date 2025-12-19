@@ -1,0 +1,134 @@
+<svg width="800" height="500" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+    <linearGradient id="panel-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#334155" />
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#020617" flood-opacity="0.3" />
+    </filter>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+      .text { font-family: 'Inter', sans-serif; fill: #f1f5f9; font-size: 12px; }
+      .text-title { font-family: 'Inter', sans-serif; fill: #f1f5f9; font-size: 14px; font-weight: 600; }
+      .text-label { font-family: 'Inter', sans-serif; fill: #94a3b8; font-size: 11px; }
+      .text-code { font-family: 'JetBrains Mono', monospace; fill: #f1f5f9; font-size: 11px; }
+      .text-highlight { font-family: 'Inter', sans-serif; fill: #6366f1; font-size: 11px; font-weight: 600; }
+      .annotation-box { fill: #334155; stroke: #475569; stroke-width: 1; rx: 6; ry: 6; }
+      .annotation-text { font-family: 'Inter', sans-serif; fill: #f1f5f9; font-size: 11px; font-weight: 600; }
+    </style>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="800" height="500" fill="url(#bg-gradient)" />
+
+  <!-- 顶部导航栏 -->
+  <rect x="0" y="0" width="800" height="50" fill="#1e293b" stroke="#475569" stroke-width="1" />
+  <g class="text-title">
+    <text x="20" y="30">DeepSeek CLI</text>
+    <text x="180" y="30" class="text">主页</text>
+    <text x="240" y="30" class="text-highlight">文件浏览器</text>
+    <text x="330" y="30" class="text">事件流</text>
+    <text x="400" y="30" class="text">管理设置</text>
+  </g>
+
+  <!-- 左侧管理菜单 -->
+  <rect x="0" y="50" width="200" height="450" fill="#1e293b" stroke="#475569" stroke-width="1" />
+  <g class="text">
+    <text x="20" y="80" class="text-title">管理菜单</text>
+    <text x="20" y="110" class="text-highlight">模型</text>
+    <text x="20" y="135">MCP Servers</text>
+    <text x="20" y="160">Sub-agents</text>
+    <text x="20" y="185">Prompts</text>
+    <text x="20" y="210">运行配置</text>
+  </g>
+
+  <!-- 主内容区域 -->
+  <rect x="200" y="50" width="600" height="450" fill="url(#panel-gradient)" stroke="#475569" stroke-width="1" />
+
+  <!-- 会话面板标题 -->
+  <rect x="210" y="60" width="580" height="40" fill="#334155" rx="6" />
+  <g class="text-title">
+    <text x="220" y="85">会话面板</text>
+    <text x="350" y="85" class="text">事件流</text>
+    <text x="420" y="85" class="text-highlight">文件改动</text>
+    <text x="500" y="85" class="text">最近对话</text>
+    <text x="590" y="85" class="text">tmux管理</text>
+  </g>
+
+  <!-- 事件流面板 -->
+  <rect x="210" y="110" width="280" height="150" fill="#0f172a" stroke="#475569" stroke-width="1" rx="6" />
+  <text x="220" y="130" class="text-label">事件流</text>
+  <g class="text-code">
+    <text x="220" y="155">[14:30] 文件修改: src/app.js</text>
+    <text x="220" y="175">[14:28] 模型响应: 完成代码生成</text>
+    <text x="220" y="195">[14:25] 用户输入: 修复登录bug</text>
+    <text x="220" y="215">[14:20] MCP Server 启动</text>
+    <text x="220" y="235">[14:15] Sub-agent 激活</text>
+  </g>
+
+  <!-- 文件改动面板 -->
+  <rect x="500" y="110" width="280" height="150" fill="#0f172a" stroke="#475569" stroke-width="1" rx="6" />
+  <text x="510" y="130" class="text-label">文件改动</text>
+  <g class="text-code">
+    <text x="510" y="155">M  src/auth.js (+12 -4)</text>
+    <text x="510" y="175">A  src/components/Button.js</text>
+    <text x="510" y="195">D  src/old/utils.js</text>
+    <text x="510" y="215">M  README.md (+3 -0)</text>
+  </g>
+
+  <!-- 最近对话面板 -->
+  <rect x="210" y="270" width="280" height="150" fill="#0f172a" stroke="#475569" stroke-width="1" rx="6" />
+  <text x="220" y="290" class="text-label">最近对话</text>
+  <g class="text">
+    <text x="220" y="315">如何配置MCP Server？</text>
+    <text x="220" y="335">实现一个React模态框组件</text>
+    <text x="220" y="355">优化数据库查询性能</text>
+    <text x="220" y="375">部署到生产环境步骤</text>
+  </g>
+
+  <!-- tmux管理面板 -->
+  <rect x="500" y="270" width="280" height="150" fill="#0f172a" stroke="#475569" stroke-width="1" rx="6" />
+  <text x="510" y="290" class="text-label">tmux管理</text>
+  <g class="text-code">
+    <text x="510" y="315">session-1: node server.js</text>
+    <text x="510" y="335">session-2: npm run dev</text>
+    <text x="510" y="355">session-3: docker logs</text>
+    <text x="510" y="375">session-4: tail -f app.log</text>
+  </g>
+
+  <!-- 标注：顶部导航 -->
+  <g class="annotation">
+    <rect x="180" y="10" width="80" height="30" class="annotation-box" />
+    <text x="190" y="30" class="annotation-text">顶部导航</text>
+    <path d="M220,40 L220,50" stroke="#6366f1" stroke-width="2" fill="none" />
+  </g>
+
+  <!-- 标注：左侧菜单 -->
+  <g class="annotation">
+    <rect x="10" y="120" width="70" height="30" class="annotation-box" />
+    <text x="20" y="140" class="annotation-text">管理菜单</text>
+    <path d="M80,135 L200,135" stroke="#6366f1" stroke-width="2" fill="none" />
+  </g>
+
+  <!-- 标注：会话面板 -->
+  <g class="annotation">
+    <rect x="400" y="430" width="70" height="30" class="annotation-box" />
+    <text x="410" y="450" class="annotation-text">会话面板</text>
+    <path d="M435,430 L435,420 L300,420 L300,270" stroke="#6366f1" stroke-width="2" fill="none" />
+  </g>
+
+  <!-- 标注：文件改动高亮 -->
+  <g class="annotation">
+    <rect x="520" y="170" width="90" height="20" class="annotation-box" />
+    <text x="530" y="185" class="annotation-text">变更高亮</text>
+    <path d="M570,170 L570,155 L510,155" stroke="#6366f1" stroke-width="2" fill="none" />
+  </g>
+
+  <!-- 水印 -->
+  <text x="750" y="490" class="text-label" text-anchor="end">DeepSeek CLI Dashboard</text>
+</svg>

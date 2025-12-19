@@ -1,0 +1,120 @@
+import express from 'express';
+import cors from 'cors';
+import dotenv from 'dotenv';
+import { fileURLToPath } from 'url';
+import { dirname, resolve } from 'path';
+import { 
+  errorHandlerMiddleware, 
+  notFoundMiddleware,
+  validateEnvironment 
+} from './middleware/errorHandler.js';
+import { connectDB } from './config/db.js';
+import authRouter from './routes/auth.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+// Load environment variables
+dotenv.config({ path: resolve(__dirname, '../../.env') });
+
+const app = express();
+const PORT = process.env.PORT || 3001;
+
+// Middleware
+app.use(cors({
+  origin: process.env.CORS_ORIGIN || '*',
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Validate environment on startup
+validateEnvironment();
+
+// Health check endpoint
+app.get('/health', (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: 'Server is healthy',
+    timestamp: new Date().toISOString(),
+    uptime: process.uptime()
+  });
+});
+
+// Email health check
+app.get('/health/email', async (req, res) => {
+  const { checkHealth } = await import('./services/emailTransporter.js');
+  const health = await checkHealth();
+  res.status(health.status === 'healthy' ? 200 : 503).json(health);
+});
+
+// API routes
+app.use('/api/auth', authRouter);
+
+// 404 handler (must be after all routes)
+app.use(notFoundMiddleware);
+
+// Global error handler (must be last)
+app.use(errorHandlerMiddleware);
+
+// Connect to MongoDB and start server
+async function startServer() {
+  try {
+    // Connect to database
+    await connectDB();
+    console.log('✓ Database connected');
+
+    const server = app.listen(PORT, () => {
+      console.log(`✓ Server running on port ${PORT}`);
+      console.log(`✓ Health check: http://localhost:${PORT}/health`);
+      console.log(`✓ Email health: http://localhost:${PORT}/health/email`);
+      console.log(`✓ Auth API: http://localhost:${PORT}/api/auth`);
+      console.log(`✓ Environment: ${process.env.NODE_ENV || 'development'}`);
+    });
+
+    // Graceful shutdown
+    const shutdown = () => {
+      console.log('Shutting down server...');
+      server.close(() => {
+        console.log('Server closed');
+        process.exit(0);
+      });
+
+      // Force close after 10 seconds
+      setTimeout(() => {
+        console.error('Force shutdown after timeout');
+        process.exit(1);
+      }, 10000);
+    };
+
+    process.on('SIGTERM', shutdown);
+    process.on('SIGINT', shutdown);
+
+    // Handle unhandled rejections
+    process.on('unhandledRejection', (reason, promise) => {
+      console.error('Unhandled Rejection at:', promise, 'reason:', reason);
+      // Log or send to error tracking service
+    });
+
+    // Handle uncaught exceptions
+    process.on('uncaughtException', (error) => {
+      console.error('Uncaught Exception:', error);
+      // Attempt to log and exit
+      process.exit(1);
+    });
+
+  } catch (error) {
+    console.error('Failed to start server:', error);
+    process.exit(1);
+  }
+}
+
+// Export app for testing
+export { app };
+
+// Start server if not in test environment
+if (process.env.NODE_ENV !== 'test') {
+  startServer();
+}

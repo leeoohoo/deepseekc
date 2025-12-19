@@ -1,0 +1,300 @@
+import nodemailer from 'nodemailer';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+// Singleton transporter instance
+let transporterInstance = null;
+let isVerifying = false;
+let lastVerificationTime = null;
+
+// Custom error classes
+export class EmailConfigurationError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = 'EmailConfigurationError';
+    this.statusCode = 500;
+  }
+}
+
+export class EmailTransporterError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = 'EmailTransporterError';
+    this.statusCode = 503;
+  }
+}
+
+/**
+ * Validate email configuration environment variables
+ * @throws {EmailConfigurationError} if required variables are missing
+ */
+export function validateEmailEnvironment() {
+  const requiredVars = ['EMAIL_HOST', 'EMAIL_PORT', 'EMAIL_USER', 'EMAIL_PASS'];
+  const missingVars = requiredVars.filter(varName => !process.env[varName]);
+  
+  if (missingVars.length > 0) {
+    throw new EmailConfigurationError(
+      `Missing required email environment variables: ${missingVars.join(', ')}`
+    );
+  }
+  
+  // Validate port is a number
+  const port = parseInt(process.env.EMAIL_PORT);
+  if (isNaN(port) || port < 1 || port > 65535) {
+    throw new EmailConfigurationError(
+      `Invalid EMAIL_PORT: ${process.env.EMAIL_PORT}. Must be a valid port number (1-65535)`
+    );
+  }
+  
+  return true;
+}
+
+/**
+ * Check if configuration is for QQ mail
+ */
+function isQQMailConfig() {
+  const host = process.env.EMAIL_HOST || '';
+  return host.toLowerCase().includes('qq.com') || host === 'smtp.qq.com';
+}
+
+/**
+ * Get optimized configuration for QQ mail
+ */
+function getQQMailOptimizedConfig(baseConfig) {
+  const port = parseInt(process.env.EMAIL_PORT || '587');
+  const isQQMail = isQQMailConfig();
+  
+  if (!isQQMail) {
+    return baseConfig;
+  }
+  
+  console.log('🔧 Applying QQ mail optimized configuration');
+  
+  const optimizedConfig = {
+    ...baseConfig,
+    // Connection pool for better performance
+    pool: true,
+    maxConnections: 5,
+    maxMessages: 100,
+    
+    // Timeout settings
+    connectionTimeout: 10000, // 10 seconds
+    greetingTimeout: 10000,   // 10 seconds
+    socketTimeout: 30000,     // 30 seconds
+    
+    // Retry mechanism
+    retryDelay: 5000,         // 5 seconds
+    maxRetries: 3,
+  };
+  
+  // QQ mail specific TLS/SSL configuration
+  if (port === 465) {
+    // SSL configuration for port 465
+    optimizedConfig.secure = true;
+    optimizedConfig.tls = {
+      rejectUnauthorized: true,
+      minVersion: 'TLSv1.2',
+      ciphers: 'HIGH:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!SRP:!CAMELLIA'
+    };
+  } else if (port === 587) {
+    // TLS/STARTTLS configuration for port 587
+    optimizedConfig.secure = false;
+    optimizedConfig.requireTLS = true;
+    optimizedConfig.tls = {
+      rejectUnauthorized: true,
+      servername: 'smtp.qq.com', // SNI support
+      minVersion: 'TLSv1.2',
+      ciphers: 'HIGH:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!MD5:!PSK:!SRP:!CAMELLIA'
+    };
+  }
+  
+  return optimizedConfig;
+}
+
+/**
+ * Create transporter with optimized configuration
+ * @returns {Object} Nodemailer transporter instance
+ * @throws {EmailConfigurationError} if configuration is invalid
+ */
+function createTransporter() {
+  validateEmailEnvironment();
+  
+  const host = process.env.EMAIL_HOST;
+  const port = parseInt(process.env.EMAIL_PORT || '587');
+  const secure = port === 465; // true for 465 (SSL), false for other ports
+  const user = process.env.EMAIL_USER;
+  const pass = process.env.EMAIL_PASS;
+  
+  // Base configuration
+  const baseConfig = {
+    host,
+    port,
+    secure,
+    auth: { user, pass },
+    tls: {}
+  };
+  
+  // Apply port-specific TLS configuration
+  if (port === 587) {
+    // For port 587 (TLS/STARTTLS), require TLS encryption
+    baseConfig.tls.requireTLS = true;
+    baseConfig.tls.rejectUnauthorized = true;
+  }
+  
+  // Apply QQ mail optimizations if applicable
+  const finalConfig = getQQMailOptimizedConfig(baseConfig);
+  
+  console.log(`📧 Creating email transporter: ${host}:${port} (secure: ${secure})`);
+  if (isQQMailConfig()) {
+    console.log('   QQ mail detected, applying optimized configuration');
+  }
+  
+  return nodemailer.createTransport(finalConfig);
+}
+
+/**
+ * Get singleton transporter instance (lazy loading)
+ * @returns {Object} Nodemailer transporter instance
+ */
+export function getTransporter() {
+  if (!transporterInstance) {
+    transporterInstance = createTransporter();
+  }
+  return transporterInstance;
+}
+
+/**
+ * Verify transporter connection (with caching)
+ * @returns {Promise<boolean>} true if connection is successful
+ * @throws {EmailTransporterError} if verification fails
+ */
+export async function verifyConnection() {
+  // Cache verification for 5 minutes
+  const now = Date.now();
+  if (lastVerificationTime && (now - lastVerificationTime) < 5 * 60 * 1000) {
+    return true;
+  }
+  
+  if (isVerifying) {
+    // Avoid concurrent verification
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    return verifyConnection();
+  }
+  
+  isVerifying = true;
+  try {
+    const transporter = getTransporter();
+    
+    await new Promise((resolve, reject) => {
+      transporter.verify((error) => {
+        if (error) {
+          reject(new EmailTransporterError(`Transporter verification failed: ${error.message}`));
+        } else {
+          resolve();
+        }
+      });
+    });
+    
+    lastVerificationTime = Date.now();
+    console.log('✅ Email transporter verified successfully');
+    return true;
+  } catch (error) {
+    console.error('❌ Email transporter verification failed:', error.message);
+    throw error;
+  } finally {
+    isVerifying = false;
+  }
+}
+
+/**
+ * Check email service health
+ * @returns {Promise<Object>} Health status object
+ */
+export async function checkHealth() {
+  try {
+    await verifyConnection();
+    return {
+      service: 'email',
+      status: 'healthy',
+      timestamp: new Date().toISOString(),
+      host: process.env.EMAIL_HOST,
+      port: process.env.EMAIL_PORT,
+      isQQMail: isQQMailConfig()
+    };
+  } catch (error) {
+    return {
+      service: 'email',
+      status: 'unhealthy',
+      timestamp: new Date().toISOString(),
+      error: error.message,
+      host: process.env.EMAIL_HOST,
+      port: process.env.EMAIL_PORT
+    };
+  }
+}
+
+/**
+ * Send test email (for debugging)
+ * @param {string} toEmail - Recipient email
+ * @returns {Promise<Object>} Send result
+ */
+export async function sendTestEmail(toEmail = 'test@example.com') {
+  try {
+    const transporter = getTransporter();
+    const from = process.env.EMAIL_FROM || 'noreply@deepseek-cli.com';
+    
+    const mailOptions = {
+      from,
+      to: toEmail,
+      subject: 'Test Email from DeepSeek CLI',
+      text: 'This is a test email to verify the email service configuration.',
+      html: '<p>This is a test email to verify the email service configuration.</p>'
+    };
+    
+    const info = await transporter.sendMail(mailOptions);
+    console.log(`✅ Test email sent to ${toEmail}: ${info.messageId}`);
+    return {
+      success: true,
+      messageId: info.messageId,
+      response: info.response
+    };
+  } catch (error) {
+    console.error('❌ Test email failed:', error.message);
+    throw new EmailTransporterError(`Test email failed: ${error.message}`);
+  }
+}
+
+/**
+ * Reset transporter instance (for testing)
+ */
+export function resetTransporter() {
+  transporterInstance = null;
+  lastVerificationTime = null;
+  isVerifying = false;
+}
+
+// Initialize email configuration validation on import
+try {
+  validateEmailEnvironment();
+  console.log('✅ Email configuration validated successfully');
+} catch (error) {
+  if (process.env.NODE_ENV === 'production') {
+    console.error('❌ Email configuration validation failed:', error.message);
+    console.error('   Email service will not be available');
+  } else {
+    console.warn('⚠️  Email configuration validation failed:', error.message);
+    console.warn('   Email service may not work properly');
+  }
+}
+
+export default {
+  getTransporter,
+  verifyConnection,
+  checkHealth,
+  sendTestEmail,
+  resetTransporter,
+  validateEmailEnvironment,
+  EmailConfigurationError,
+  EmailTransporterError
+};

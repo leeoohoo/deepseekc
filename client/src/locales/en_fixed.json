@@ -1,0 +1,176 @@
+jq: parse error: Expected value before ',' at line 175, column 4
+{
+  "header": {
+    "logo": "Deepseek CLI",
+    "nav": {
+      "home": "Home",
+      "docs": "Docs",
+      "uiShowcase": "UI Showcase"
+    },
+    "buttons": {
+      "login": "Login",
+      "getStarted": "Get Started"
+    }
+  },
+  "footer": {
+    "logo": "Deepseek CLI",
+    "description": "AI-powered terminal assistant with sub-agent marketplace, task tracking, and MCP tools. Build smarter with intelligent automation.",
+    "headings": {
+      "product": "Product",
+      "community": "Community"
+    },
+    "links": {
+      "documentation": "Documentation",
+      "features": "Features",
+      "plugins": "Plugins",
+      "github": "GitHub"
+    },
+    "copyright": "© {{year}} Deepseek CLI. MIT License."
+  },
+  "home": {
+    "hero": {
+      "badge": "AI-Powered Terminal Assistant",
+      "title1": "AI-Powered",
+      "title2": "Terminal Assistant",
+      "subtitle": "Enhanced CLI with modern visual interface, sub-agent marketplace, task tracking, and MCP tools",
+      "installLabel": "Install globally",
+      "copyButton": "Copy",
+      "installCommand": "npm install -g @leeoohoo/deepseek-cli",
+      "cta": {
+        "getStarted": "Get Started",
+        "viewDocs": "View Docs"
+      },
+      "terminalLabel": "deepseek-cli"
+    },
+    "features": {
+      "heading": "Core Features",
+      "headingCore": "Core",
+      "headingGradient": "Features",
+      "subheading": "Everything you need to supercharge your terminal workflow",
+      "items": {
+        "subAgentMarketplace": {
+          "title": "Sub-Agent Marketplace",
+          "description": "60+ plugins for Python, React, Spring Boot, DevOps, etc. Browse and install plugins through the modern visual interface, or use `/sub install <id>`"
+        },
+        "taskManagement": {
+          "title": "Task Management",
+          "description": "Built-in task tracking with MCP tools. Main agent orchestrates, sub-agents execute. View task progress and status in the desktop app."
+        },
+        "longRunningCommands": {
+          "title": "Long-Running Commands",
+          "description": "tmux integration for commands that shouldn't timeout. Use `tmux_run` / `tmux_capture_output`, and monitor task status in real-time through the UI."
+        },
+        "autoSummary": {
+          "title": "Modern UI Interface",
+          "description": "Modern Electron desktop application interface providing intuitive visual operations and powerful feature integration"
+        }
+      }
+    },
+    "quickStart": {
+      "heading": "Get Started in Seconds",
+      "headingCore": "Get Started in",
+      "headingGradient": "Seconds",
+      "subheading": "Install and start using DeepSeek CLI immediately",
+      "steps": {
+        "install": {
+          "title": "1. Install",
+          "command": "npm install -g @leeoohoo/deepseek-cli"
+        },
+        "startCli": {
+          "title": "2. Start CLI",
+          "command": "deepseekc chat",
+          "note": "or run directly with npx",
+          "npxCommand": "npx @leeoohoo/deepseek-cli chat"
+        },
+        "explore": {
+          "title": "3. Explore",
+          "items": {
+            "browseMarketplace": "Browse the marketplace",
+            "installFirstPlugin": "Install your first plugin",
+            "startAutomating": "Start automating tasks"
+          }
+        }
+      }
+    },
+    "uiShowcase": {
+      "headingCore": "UI Showcase",
+      "headingGradient": "Four Core Interfaces",
+      "subheading": "Carefully designed Electron interfaces covering all core usage scenarios of CLI tools"
+    },
+    "heading": "Essential Commands",
+    "subheading": "Master the CLI with these powerful commands",
+    "items": {
+      "subMarketplace": {
+        "command": "/sub marketplace",
+        "description": "Browse 60+ plugins"
+      },
+      "subInstall": {
+        "command": "/sub install <id>",
+        "description": "Install a plugin"
+      },
+      "subAgents": {
+        "command": "/sub agents",
+        "description": "List installed agents"
+      },
+      "subRun": {
+        "command": "/sub run <agent> <task>",
+        "description": "Run a sub-agent"
+      },
+      "prompt": {
+        "command": "/prompt",
+        "description": "View/override system prompt"
+      },
+      "tool": {
+        "command": "/tool [id]",
+        "description": "Show tool outputs"
+      },
+      "reset": {
+        "command": "/reset",
+        "description": "Clear session"
+      }
+    }
+  },
+  "architecture": {
+    "heading": "Intelligent Architecture",
+    "description": "DeepSeek CLI uses a powerful multi-agent system and provides a modern Electron desktop application interface, designed for maximum efficiency and flexibility.",
+    "items": {
+      "mainAgent": {
+        "title": "Main Agent",
+        "description": "Orchestrator only, uses <code>invoke_sub_agent</code>, task manager tools"
+      },
+      "subAgents": {
+        "title": "Sub-Agents",
+        "description": "Full MCP tool access (filesystem, shell, tasks) for specialized operations"
+      },
+      "configuration": {
+        "title": "Configuration",
+        "description": "Config paths: <code>~/.deepseek_cli/auth/models.yaml</code>, etc."
+      }
+    },
+    "experience": "Experience seamless orchestration between main and sub-agents"
+  },
+  "plugins": {
+    "heading": "Rich Plugin Ecosystem",
+    "subheading": "Choose from 60+ specialized plugins for every development need",
+    "categories": {
+      "pythonDevelopment": "Python Development",
+      "frontendReact": "Frontend React",
+      "springBoot": "Spring Boot",
+      "cloudInfrastructure": "Cloud Infrastructure",
+      "cicd": "CI/CD",
+      "securityScanning": "Security Scanning",
+      "machineLearning": "Machine Learning",
+      "databaseDesign": "Database Design"
+    },
+    "pluginsCount": "plugins",
+    "browseAll": "Browse All Plugins"
+  },
+  "cta": {
+    "heading": "Ready to Transform Your Terminal?",
+    "subheading": "Join thousands of developers who have already supercharged their workflow with DeepSeek CLI",
+    "buttons": {
+      "getStartedFree": "Get Started Free",
+      "readDocumentation": "Read Documentation"
+    }
+  }
+}

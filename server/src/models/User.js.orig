@@ -1,0 +1,81 @@
+import mongoose from 'mongoose';
+import crypto from 'crypto';
+
+const userSchema = new mongoose.Schema({
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+    trim: true,
+    lowercase: true,
+    match: [/^\S+@\S+\.\S+$/, 'Please enter a valid email address']
+  },
+  isVerified: {
+    type: Boolean,
+    default: false
+  },
+  verificationCode: {
+    type: String,
+    default: null
+  },
+  verificationCodeExpires: {
+    type: Date,
+    default: null
+  },
+  referralCode: {
+    type: String,
+    default: null,
+    trim: true
+  },
+  myReferralCode: {
+    type: String,
+    unique: true,
+    sparse: true,
+    trim: true
+  },
+  lastLoginAt: {
+    type: Date,
+    default: null
+  }
+}, {
+  timestamps: { createdAt: true, updatedAt: false }
+});
+
+/**
+ * Generate a nanoid-like 8 character alphanumeric referral code
+ */
+const generateReferralCode = () => {
+  // Generate 6 random bytes and convert to base64 (URL-safe)
+  const bytes = crypto.randomBytes(6);
+  // Convert to base64, remove +, /, = characters, take first 8 chars
+  const code = bytes.toString('base64')
+    .replace(/[+/=]/g, '')
+    .substring(0, 8)
+    .toUpperCase();
+  return code;
+};
+
+/**
+ * Pre-save hook to generate unique referral code if not exists
+ */
+userSchema.pre('save', function(next) {
+  if (!this.myReferralCode) {
+    let code;
+    let attempts = 0;
+    const maxAttempts = 5;
+    
+    // Generate a unique code (in real app, we'd check database for uniqueness)
+    // For simplicity, we'll just generate one and assume uniqueness
+    code = generateReferralCode();
+    this.myReferralCode = code;
+  }
+  next();
+});
+
+// Indexes for faster queries
+userSchema.index({ email: 1 }, { unique: true });
+userSchema.index({ myReferralCode: 1 }, { sparse: true });
+
+const User = mongoose.model('User', userSchema);
+
+export default User;

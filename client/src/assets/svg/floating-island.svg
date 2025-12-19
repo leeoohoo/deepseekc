@@ -1,0 +1,121 @@
+<svg width="800" height="500" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+    <linearGradient id="floating-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#334155" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+    <filter id="floating-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#020617" flood-opacity="0.5" />
+    </filter>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+      .text { font-family: 'Inter', sans-serif; fill: #f1f5f9; font-size: 12px; }
+      .text-title { font-family: 'Inter', sans-serif; fill: #f1f5f9; font-size: 14px; font-weight: 600; }
+      .text-label { font-family: 'Inter', sans-serif; fill: #94a3b8; font-size: 11px; }
+      .text-code { font-family: 'JetBrains Mono', monospace; fill: #f1f5f9; font-size: 11px; }
+      .text-highlight { font-family: 'Inter', sans-serif; fill: #6366f1; font-size: 11px; font-weight: 600; }
+      .annotation-box { fill: #334155; stroke: #475569; stroke-width: 1; rx: 6; ry: 6; }
+      .annotation-text { font-family: 'Inter', sans-serif; fill: #f1f5f9; font-size: 11px; font-weight: 600; }
+      .btn-primary { fill: #6366f1; }
+      .btn-secondary { fill: #475569; }
+      .btn-danger { fill: #ef4444; }
+    </style>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="800" height="500" fill="url(#bg-gradient)" />
+
+  <!-- 模拟背景内容（示意） -->
+  <rect x="100" y="50" width="600" height="300" fill="#1e293b" stroke="#475569" stroke-width="1" rx="8" />
+  <text x="120" y="80" class="text-title">编辑器窗口</text>
+  <g class="text-code">
+    <text x="120" y="110">// 这里是代码编辑器...</text>
+    <text x="120" y="135">function example() {</text>
+    <text x="140" y="160">  console.log("Hello, DeepSeek CLI");</text>
+    <text x="120" y="185">}</text>
+  </g>
+
+  <!-- 浮动岛面板 -->
+  <rect x="200" y="320" width="400" height="150" fill="url(#floating-gradient)" stroke="#475569" stroke-width="1" rx="12" filter="url(#floating-shadow)" />
+  
+  <!-- 浮动岛标题 -->
+  <rect x="200" y="320" width="400" height="30" fill="#475569" rx="12" />
+  <text x="220" y="340" class="text-title">💬 交互面板</text>
+
+  <!-- 终端选择器 -->
+  <rect x="220" y="360" width="120" height="30" fill="#1e293b" stroke="#475569" stroke-width="1" rx="6" />
+  <text x="230" y="380" class="text">终端: bash</text>
+  <polygon points="320,370 330,375 320,380" fill="#94a3b8" />
+
+  <!-- 目录选择 -->
+  <rect x="350" y="360" width="120" height="30" fill="#1e293b" stroke="#475569" stroke-width="1" rx="6" />
+  <text x="360" y="380" class="text">目录: /src</text>
+  <polygon points="450,370 460,375 450,380" fill="#94a3b8" />
+
+  <!-- 消息输入框 -->
+  <rect x="220" y="400" width="360" height="40" fill="#0f172a" stroke="#475569" stroke-width="1" rx="6" />
+  <text x="230" y="425" class="text">输入消息或命令...</text>
+
+  <!-- UI提示表单 -->
+  <rect x="220" y="450" width="360" height="40" fill="#334155" stroke="#475569" stroke-width="1" rx="6" />
+  <text x="230" y="475" class="text-label">请选择操作类型:</text>
+  <rect x="380" y="455" width="80" height="20" fill="#475569" rx="4" />
+  <text x="390" y="470" class="text">代码生成</text>
+  <rect x="470" y="455" width="80" height="20" fill="#475569" rx="4" />
+  <text x="480" y="470" class="text">文件操作</text>
+
+  <!-- 操作按钮 -->
+  <!-- 发送按钮 -->
+  <rect x="590" y="360" width="80" height="30" class="btn-primary" rx="6" />
+  <text x="615" y="380" class="text" fill="white">发送</text>
+  
+  <!-- 停止按钮 -->
+  <rect x="590" y="400" width="80" height="30" class="btn-secondary" rx="6" />
+  <text x="615" y="420" class="text">停止</text>
+  
+  <!-- 关闭按钮 -->
+  <rect x="590" y="440" width="80" height="30" class="btn-danger" rx="6" />
+  <text x="615" y="460" class="text" fill="white">关闭</text>
+
+  <!-- 标注：浮动岛 -->
+  <g class="annotation">
+    <rect x="300" y="280" width="80" height="30" class="annotation-box" />
+    <text x="310" y="300" class="annotation-text">浮动岛面板</text>
+    <path d="M340,280 L340,270 L400,270 L400,320" stroke="#6366f1" stroke-width="2" fill="none" />
+  </g>
+
+  <!-- 标注：终端选择器 -->
+  <g class="annotation">
+    <rect x="100" y="360" width="90" height="30" class="annotation-box" />
+    <text x="110" y="380" class="annotation-text">终端选择器</text>
+    <path d="M190,375 L220,375" stroke="#6366f1" stroke-width="2" fill="none" />
+  </g>
+
+  <!-- 标注：消息输入框 -->
+  <g class="annotation">
+    <rect x="100" y="410" width="90" height="30" class="annotation-box" />
+    <text x="110" y="430" class="annotation-text">消息输入框</text>
+    <path d="M190,425 L220,425" stroke="#6366f1" stroke-width="2" fill="none" />
+  </g>
+
+  <!-- 标注：UI提示表单 -->
+  <g class="annotation">
+    <rect x="100" y="460" width="90" height="30" class="annotation-box" />
+    <text x="110" y="480" class="annotation-text">UI提示表单</text>
+    <path d="M190,475 L220,475" stroke="#6366f1" stroke-width="2" fill="none" />
+  </g>
+
+  <!-- 标注：操作按钮 -->
+  <g class="annotation">
+    <rect x="680" y="380" width="90" height="30" class="annotation-box" />
+    <text x="690" y="400" class="annotation-text">操作按钮</text>
+    <path d="M680,395 L670,395 L590,395" stroke="#6366f1" stroke-width="2" fill="none" />
+  </g>
+
+  <!-- 水印 -->
+  <text x="750" y="490" class="text-label" text-anchor="end">DeepSeek CLI Floating Island</text>
+</svg>

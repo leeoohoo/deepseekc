@@ -1,0 +1,171 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="Deepseek CLI 管理台 - 主页">
+  <defs>
+    <filter id="ds-page-session-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#0b1220" flood-opacity="0.18" />
+    </filter>
+    <clipPath id="ds-page-session-clip">
+      <rect x="80" y="60" width="1440" height="900" rx="22" />
+    </clipPath>
+  </defs>
+  <style>
+    .font {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "PingFang SC",
+        "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    }
+    .mono {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+    .h1 { font-size: 20px; font-weight: 700; fill: #111827; }
+    .h2 { font-size: 16px; font-weight: 600; fill: #111827; }
+    .text { font-size: 13px; fill: #111827; }
+    .muted { font-size: 12px; fill: #6b7280; }
+    .window { fill: #ffffff; }
+    .surface { fill: #f5f5f5; }
+    .border { stroke: #e5e7eb; stroke-width: 1; }
+    .card { fill: #ffffff; stroke: #e5e7eb; stroke-width: 1; }
+    .tab { fill: #f9fafb; stroke: #e5e7eb; stroke-width: 1; }
+    .tabActive { fill: #e6f4ff; stroke: #91caff; stroke-width: 1; }
+    .tabText { font-size: 14px; font-weight: 600; fill: #374151; }
+    .tabTextActive { fill: #1677ff; }
+    .control { fill: #f9fafb; stroke: #e5e7eb; stroke-width: 1; }
+    .btnGhost { fill: #ffffff; stroke: #e5e7eb; stroke-width: 1; }
+    .btnPrimary { fill: #1677ff; }
+    .btnText { font-size: 13px; font-weight: 600; }
+    .chip { fill: #f3f4f6; stroke: #e5e7eb; stroke-width: 1; }
+    .chipBlue { fill: #e6f4ff; stroke: #91caff; stroke-width: 1; }
+    .chipGreen { fill: #f6ffed; stroke: #b7eb8f; stroke-width: 1; }
+    .chipText { font-size: 11px; font-weight: 700; fill: #374151; }
+    .chipTextBlue { fill: #1677ff; }
+    .chipTextGreen { fill: #389e0d; }
+    .tableHead { fill: #f9fafb; }
+    .line { stroke: #e5e7eb; stroke-width: 1; }
+  </style>
+
+  <rect x="80" y="60" width="1440" height="900" rx="22" class="window" filter="url(#ds-page-session-shadow)" />
+
+  <g clip-path="url(#ds-page-session-clip)">
+    <rect x="80" y="60" width="1440" height="900" class="surface" />
+
+    <!-- Header -->
+    <rect x="80" y="60" width="1440" height="100" fill="#ffffff" />
+    <rect x="80" y="160" width="1440" height="1" fill="#e5e7eb" />
+    <text class="font h1" x="110" y="98" dominant-baseline="middle">Deepseek CLI 管理台</text>
+
+    <!-- Tabs -->
+    <rect x="520" y="78" width="86" height="40" rx="12" class="tabActive" />
+    <text class="font tabText tabTextActive" x="563" y="98" dominant-baseline="middle" text-anchor="middle">主页</text>
+    <rect x="616" y="78" width="128" height="40" rx="12" class="tab" />
+    <text class="font tabText" x="680" y="98" dominant-baseline="middle" text-anchor="middle">文件浏览器</text>
+    <rect x="754" y="78" width="148" height="40" rx="12" class="tab" />
+    <text class="font tabText" x="828" y="98" dominant-baseline="middle" text-anchor="middle">事件流 / 日志</text>
+
+    <!-- Settings button -->
+    <circle cx="1470" cy="98" r="20" fill="#f3f4f6" stroke="#e5e7eb" />
+    <circle cx="1470" cy="98" r="8" fill="none" stroke="#6b7280" stroke-width="2" />
+    <line x1="1470" y1="84" x2="1470" y2="90" stroke="#6b7280" stroke-width="2" stroke-linecap="round" />
+    <line x1="1470" y1="106" x2="1470" y2="112" stroke="#6b7280" stroke-width="2" stroke-linecap="round" />
+    <line x1="1456" y1="98" x2="1462" y2="98" stroke="#6b7280" stroke-width="2" stroke-linecap="round" />
+    <line x1="1478" y1="98" x2="1484" y2="98" stroke="#6b7280" stroke-width="2" stroke-linecap="round" />
+
+    <!-- Content: top controls -->
+    <rect x="104" y="184" width="1392" height="110" rx="14" class="card" />
+    <text class="font h2" x="124" y="214" dominant-baseline="middle">主页</text>
+    <text class="font muted" x="124" y="240" dominant-baseline="middle">回溯对话、工具调用与文件改动记录（来自 .deepseek_cli）</text>
+    <rect x="964" y="205" width="260" height="36" rx="10" class="control" />
+    <text class="font muted" x="984" y="223" dominant-baseline="middle">按终端(runId)过滤</text>
+    <rect x="1234" y="205" width="72" height="36" rx="10" class="btnGhost" />
+    <text class="font btnText" x="1270" y="223" dominant-baseline="middle" text-anchor="middle" fill="#374151">刷新</text>
+    <rect x="1316" y="205" width="92" height="36" rx="10" class="btnGhost" />
+    <text class="font btnText" x="1362" y="223" dominant-baseline="middle" text-anchor="middle" fill="#374151">工具调用</text>
+    <rect x="1418" y="205" width="72" height="36" rx="10" class="btnGhost" />
+    <text class="font btnText" x="1454" y="223" dominant-baseline="middle" text-anchor="middle" fill="#374151">任务</text>
+
+    <!-- Stats -->
+    <rect x="104" y="310" width="336" height="90" rx="14" class="card" />
+    <text class="font muted" x="124" y="335" dominant-baseline="middle">事件总数</text>
+    <text class="font h1" x="124" y="366" dominant-baseline="middle" fill="#1677ff">1284</text>
+
+    <rect x="456" y="310" width="336" height="90" rx="14" class="card" />
+    <text class="font muted" x="476" y="335" dominant-baseline="middle">对话轮次</text>
+    <text class="font h1" x="476" y="366" dominant-baseline="middle" fill="#13c2c2">42</text>
+
+    <rect x="808" y="310" width="336" height="90" rx="14" class="card" />
+    <text class="font muted" x="828" y="335" dominant-baseline="middle">工具 / 子代理</text>
+    <text class="font h1" x="828" y="366" dominant-baseline="middle" fill="#722ed1">18</text>
+
+    <rect x="1160" y="310" width="336" height="90" rx="14" class="card" />
+    <text class="font muted" x="1180" y="335" dominant-baseline="middle">任务</text>
+    <text class="font h1" x="1180" y="366" dominant-baseline="middle" fill="#fa8c16">6</text>
+
+    <!-- Row: recent conversation -->
+    <rect x="104" y="416" width="688" height="170" rx="14" class="card" />
+    <text class="font h2" x="124" y="446" dominant-baseline="middle">近期对话</text>
+    <rect x="124" y="468" width="44" height="18" rx="9" class="chipBlue" />
+    <text class="font chipText chipTextBlue" x="146" y="477" dominant-baseline="middle" text-anchor="middle">user</text>
+    <text class="font text" x="176" y="477" dominant-baseline="middle">请帮我扫描项目结构并总结…</text>
+    <rect x="124" y="498" width="72" height="18" rx="9" class="chipGreen" />
+    <text class="font chipText chipTextGreen" x="160" y="507" dominant-baseline="middle" text-anchor="middle">assistant</text>
+    <text class="font text" x="204" y="507" dominant-baseline="middle">已定位到菜单与页面组件…</text>
+    <rect x="124" y="528" width="44" height="18" rx="9" class="chipBlue" />
+    <text class="font chipText chipTextBlue" x="146" y="537" dominant-baseline="middle" text-anchor="middle">user</text>
+    <text class="font text" x="176" y="537" dominant-baseline="middle">打开文件浏览器并查看 diff</text>
+
+    <!-- Row: file changes -->
+    <rect x="808" y="416" width="688" height="170" rx="14" class="card" />
+    <text class="font h2" x="828" y="446" dominant-baseline="middle">文件改动记录</text>
+    <rect x="828" y="470" width="44" height="18" rx="9" class="chip" />
+    <text class="font chipText" x="850" y="479" dominant-baseline="middle" text-anchor="middle">修改</text>
+    <text class="font text" x="882" y="479" dominant-baseline="middle">apps/ui/src/index.jsx</text>
+    <text class="font muted" x="1380" y="479" dominant-baseline="middle" text-anchor="end">查看 diff</text>
+    <rect x="828" y="502" width="44" height="18" rx="9" class="chip" />
+    <text class="font chipText" x="850" y="511" dominant-baseline="middle" text-anchor="middle">新增</text>
+    <text class="font text" x="882" y="511" dominant-baseline="middle">assets/ui-page-svgs/…</text>
+    <text class="font muted" x="1380" y="511" dominant-baseline="middle" text-anchor="end">查看文件</text>
+    <rect x="828" y="534" width="44" height="18" rx="9" class="chip" />
+    <text class="font chipText" x="850" y="543" dominant-baseline="middle" text-anchor="middle">修改</text>
+    <text class="font text" x="882" y="543" dominant-baseline="middle">electron/main.js</text>
+    <text class="font muted" x="1380" y="543" dominant-baseline="middle" text-anchor="end">查看 diff</text>
+
+    <!-- Row: tmux -->
+    <rect x="104" y="602" width="1392" height="184" rx="14" class="card" />
+    <text class="font h2" x="124" y="632" dominant-baseline="middle">Tmux / Sessions</text>
+    <rect x="1318" y="614" width="72" height="32" rx="10" class="btnGhost" />
+    <text class="font btnText" x="1354" y="630" dominant-baseline="middle" text-anchor="middle" fill="#374151">刷新</text>
+    <rect x="1410" y="614" width="70" height="32" rx="10" class="btnGhost" />
+    <text class="font btnText" x="1445" y="630" dominant-baseline="middle" text-anchor="middle" fill="#374151">Kill</text>
+
+    <rect x="124" y="656" width="1352" height="34" rx="10" class="tableHead" stroke="#e5e7eb" />
+    <text class="font muted" x="144" y="673" dominant-baseline="middle">session</text>
+    <text class="font muted" x="480" y="673" dominant-baseline="middle">windows</text>
+    <text class="font muted" x="720" y="673" dominant-baseline="middle">created</text>
+    <text class="font muted" x="1180" y="673" dominant-baseline="middle">status</text>
+
+    <rect x="124" y="690" width="1352" height="32" rx="10" fill="#ffffff" stroke="#e5e7eb" />
+    <text class="font text" x="144" y="706" dominant-baseline="middle">deepseek</text>
+    <text class="font text" x="480" y="706" dominant-baseline="middle">2</text>
+    <text class="font text" x="720" y="706" dominant-baseline="middle">2025-12-18 16:42</text>
+    <rect x="1170" y="698" width="54" height="18" rx="9" fill="#f6ffed" stroke="#b7eb8f" />
+    <text class="font chipText" x="1197" y="707" dominant-baseline="middle" text-anchor="middle" fill="#389e0d">running</text>
+
+    <rect x="124" y="724" width="1352" height="32" rx="10" fill="#ffffff" stroke="#e5e7eb" />
+    <text class="font text" x="144" y="740" dominant-baseline="middle">build</text>
+    <text class="font text" x="480" y="740" dominant-baseline="middle">1</text>
+    <text class="font text" x="720" y="740" dominant-baseline="middle">2025-12-18 15:11</text>
+    <rect x="1170" y="732" width="54" height="18" rx="9" fill="#fff7e6" stroke="#ffd591" />
+    <text class="font chipText" x="1197" y="741" dominant-baseline="middle" text-anchor="middle" fill="#d46b08">idle</text>
+
+    <!-- Floating island -->
+    <rect x="104" y="810" width="1392" height="120" rx="18" fill="#ffffff" stroke="#e5e7eb" />
+    <rect x="124" y="828" width="90" height="18" rx="9" class="chip" />
+    <text class="font chipText" x="169" y="837" dominant-baseline="middle" text-anchor="middle">run: auto</text>
+    <rect x="220" y="828" width="110" height="18" rx="9" class="chip" />
+    <text class="font chipText" x="275" y="837" dominant-baseline="middle" text-anchor="middle">prompts: 0</text>
+
+    <rect x="124" y="856" width="1120" height="44" rx="12" class="control" />
+    <text class="font muted" x="144" y="878" dominant-baseline="middle">输入要发送给 CLI 的内容…</text>
+    <rect x="1260" y="856" width="216" height="44" rx="12" class="btnPrimary" />
+    <text class="font btnText" x="1368" y="878" dominant-baseline="middle" text-anchor="middle" fill="#ffffff">发送</text>
+  </g>
+
+  <rect x="80" y="60" width="1440" height="900" rx="22" fill="none" stroke="#e5e7eb" />
+</svg>

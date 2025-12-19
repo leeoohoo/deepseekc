@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="Deepseek CLI 管理台 - 事件流 / 日志">
+  <defs>
+    <filter id="ds-page-events-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="14" stdDeviation="18" flood-color="#0b1220" flood-opacity="0.18" />
+    </filter>
+    <clipPath id="ds-page-events-clip">
+      <rect x="80" y="60" width="1440" height="900" rx="22" />
+    </clipPath>
+  </defs>
+  <style>
+    .font {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "PingFang SC",
+        "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    }
+    .mono {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+    .h1 { font-size: 20px; font-weight: 700; fill: #111827; }
+    .h2 { font-size: 16px; font-weight: 600; fill: #111827; }
+    .text { font-size: 13px; fill: #111827; }
+    .muted { font-size: 12px; fill: #6b7280; }
+    .surface { fill: #f5f5f5; }
+    .card { fill: #ffffff; stroke: #e5e7eb; stroke-width: 1; }
+    .tab { fill: #f9fafb; stroke: #e5e7eb; stroke-width: 1; }
+    .tabActive { fill: #e6f4ff; stroke: #91caff; stroke-width: 1; }
+    .tabText { font-size: 14px; font-weight: 600; fill: #374151; }
+    .tabTextActive { fill: #1677ff; }
+    .control { fill: #f9fafb; stroke: #e5e7eb; stroke-width: 1; }
+    .btnGhost { fill: #ffffff; stroke: #e5e7eb; stroke-width: 1; }
+    .btnPrimary { fill: #1677ff; }
+    .btnText { font-size: 13px; font-weight: 600; }
+    .chip { fill: #f3f4f6; stroke: #e5e7eb; stroke-width: 1; }
+    .chipBlue { fill: #e6f4ff; stroke: #91caff; stroke-width: 1; }
+    .chipPurple { fill: #f9f0ff; stroke: #d3adf7; stroke-width: 1; }
+    .chipText { font-size: 11px; font-weight: 700; fill: #374151; }
+    .chipTextBlue { fill: #1677ff; }
+    .chipTextPurple { fill: #722ed1; }
+    .code { fill: #f7f9fb; stroke: #eef2f7; stroke-width: 1; }
+    .line { stroke: #e5e7eb; stroke-width: 1; }
+  </style>
+
+  <rect x="80" y="60" width="1440" height="900" rx="22" fill="#ffffff" filter="url(#ds-page-events-shadow)" />
+
+  <g clip-path="url(#ds-page-events-clip)">
+    <rect x="80" y="60" width="1440" height="900" class="surface" />
+
+    <!-- Header -->
+    <rect x="80" y="60" width="1440" height="100" fill="#ffffff" />
+    <rect x="80" y="160" width="1440" height="1" fill="#e5e7eb" />
+    <text class="font h1" x="110" y="98" dominant-baseline="middle">Deepseek CLI 管理台</text>
+
+    <!-- Tabs -->
+    <rect x="520" y="78" width="86" height="40" rx="12" class="tab" />
+    <text class="font tabText" x="563" y="98" dominant-baseline="middle" text-anchor="middle">主页</text>
+    <rect x="616" y="78" width="128" height="40" rx="12" class="tab" />
+    <text class="font tabText" x="680" y="98" dominant-baseline="middle" text-anchor="middle">文件浏览器</text>
+    <rect x="754" y="78" width="148" height="40" rx="12" class="tabActive" />
+    <text class="font tabText tabTextActive" x="828" y="98" dominant-baseline="middle" text-anchor="middle">事件流 / 日志</text>
+
+    <!-- Settings button -->
+    <circle cx="1470" cy="98" r="20" fill="#f3f4f6" stroke="#e5e7eb" />
+    <circle cx="1470" cy="98" r="8" fill="none" stroke="#6b7280" stroke-width="2" />
+    <line x1="1470" y1="84" x2="1470" y2="90" stroke="#6b7280" stroke-width="2" stroke-linecap="round" />
+    <line x1="1470" y1="106" x2="1470" y2="112" stroke="#6b7280" stroke-width="2" stroke-linecap="round" />
+    <line x1="1456" y1="98" x2="1462" y2="98" stroke="#6b7280" stroke-width="2" stroke-linecap="round" />
+    <line x1="1478" y1="98" x2="1484" y2="98" stroke="#6b7280" stroke-width="2" stroke-linecap="round" />
+
+    <!-- Main card -->
+    <rect x="104" y="184" width="1392" height="602" rx="14" class="card" />
+    <text class="font h2" x="124" y="214" dominant-baseline="middle">事件流 / 日志</text>
+    <rect x="1418" y="198" width="72" height="32" rx="10" class="btnGhost" />
+    <text class="font btnText" x="1454" y="214" dominant-baseline="middle" text-anchor="middle" fill="#374151">刷新</text>
+
+    <!-- Filters -->
+    <rect x="124" y="238" width="270" height="34" rx="10" class="control" />
+    <text class="font muted" x="144" y="255" dominant-baseline="middle">按终端(runId)过滤</text>
+
+    <rect x="404" y="238" width="62" height="34" rx="10" class="chipBlue" />
+    <text class="font chipText chipTextBlue" x="435" y="255" dominant-baseline="middle" text-anchor="middle">全部</text>
+    <rect x="472" y="238" width="62" height="34" rx="10" class="chip" />
+    <text class="font chipText" x="503" y="255" dominant-baseline="middle" text-anchor="middle">对话</text>
+    <rect x="540" y="238" width="62" height="34" rx="10" class="chip" />
+    <text class="font chipText" x="571" y="255" dominant-baseline="middle" text-anchor="middle">工具</text>
+    <rect x="608" y="238" width="74" height="34" rx="10" class="chip" />
+    <text class="font chipText" x="645" y="255" dominant-baseline="middle" text-anchor="middle">子代理</text>
+
+    <rect x="692" y="238" width="210" height="34" rx="10" class="control" />
+    <text class="font muted" x="712" y="255" dominant-baseline="middle">按类型过滤</text>
+    <rect x="912" y="238" width="240" height="34" rx="10" class="control" />
+    <text class="font muted" x="932" y="255" dominant-baseline="middle">关键字搜索 payload/type</text>
+
+    <!-- List items -->
+    <rect x="124" y="292" width="1352" height="1" fill="#eef2f7" />
+
+    <rect x="124" y="306" width="44" height="18" rx="9" class="chipBlue" />
+    <text class="font chipText chipTextBlue" x="146" y="315" dominant-baseline="middle" text-anchor="middle">user</text>
+    <text class="font text" x="178" y="315" dominant-baseline="middle">解释一下 WorkspaceExplorerView 的分栏逻辑</text>
+    <text class="font muted" x="1468" y="315" dominant-baseline="middle" text-anchor="end">16:50:12</text>
+    <rect x="124" y="334" width="1352" height="60" rx="10" class="code" />
+    <text class="mono muted" x="144" y="362" dominant-baseline="middle">{ "type": "user", "preview": "..." }</text>
+
+    <rect x="124" y="410" width="52" height="18" rx="9" class="chipPurple" />
+    <text class="font chipText chipTextPurple" x="150" y="419" dominant-baseline="middle" text-anchor="middle">tool</text>
+    <text class="font text" x="186" y="419" dominant-baseline="middle">shell_command · rg -n "renderContent"</text>
+    <text class="font muted" x="1468" y="419" dominant-baseline="middle" text-anchor="end">16:50:25</text>
+    <rect x="124" y="438" width="1352" height="60" rx="10" class="code" />
+    <text class="mono muted" x="144" y="466" dominant-baseline="middle">{ "tool": "shell_command", "result": "..." }</text>
+
+    <rect x="124" y="514" width="72" height="18" rx="9" fill="#f6ffed" stroke="#b7eb8f" />
+    <text class="font chipText" x="160" y="523" dominant-baseline="middle" text-anchor="middle" fill="#389e0d">assistant</text>
+    <text class="font text" x="204" y="523" dominant-baseline="middle">已定位到 8 个菜单页面，并生成 SVG 示意图…</text>
+    <text class="font muted" x="1468" y="523" dominant-baseline="middle" text-anchor="end">16:51:03</text>
+    <rect x="124" y="542" width="1352" height="60" rx="10" class="code" />
+    <text class="mono muted" x="144" y="570" dominant-baseline="middle">{ "type": "assistant", "content": "..." }</text>
+
+    <!-- Floating island -->
+    <rect x="104" y="810" width="1392" height="120" rx="18" fill="#ffffff" stroke="#e5e7eb" />
+    <rect x="124" y="828" width="90" height="18" rx="9" class="chip" />
+    <text class="font chipText" x="169" y="837" dominant-baseline="middle" text-anchor="middle">run: auto</text>
+    <rect x="124" y="856" width="1120" height="44" rx="12" class="control" />
+    <text class="font muted" x="144" y="878" dominant-baseline="middle">输入要发送给 CLI 的内容…</text>
+    <rect x="1260" y="856" width="216" height="44" rx="12" class="btnPrimary" />
+    <text class="font btnText" x="1368" y="878" dominant-baseline="middle" text-anchor="middle" fill="#ffffff">发送</text>
+  </g>
+
+  <rect x="80" y="60" width="1440" height="900" rx="22" fill="none" stroke="#e5e7eb" />
+</svg>

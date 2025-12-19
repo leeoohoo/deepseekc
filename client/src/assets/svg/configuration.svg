@@ -1,0 +1,152 @@
+<svg width="800" height="500" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+    <linearGradient id="panel-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#334155" />
+    </linearGradient>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+      .text { font-family: 'Inter', sans-serif; fill: #f1f5f9; font-size: 12px; }
+      .text-title { font-family: 'Inter', sans-serif; fill: #f1f5f9; font-size: 14px; font-weight: 600; }
+      .text-label { font-family: 'Inter', sans-serif; fill: #94a3b8; font-size: 11px; }
+      .text-code { font-family: 'JetBrains Mono', monospace; fill: #f1f5f9; font-size: 11px; }
+      .text-highlight { font-family: 'Inter', sans-serif; fill: #6366f1; font-size: 11px; font-weight: 600; }
+      .annotation-box { fill: #334155; stroke: #475569; stroke-width: 1; rx: 6; ry: 6; }
+      .annotation-text { font-family: 'Inter', sans-serif; fill: #f1f5f9; font-size: 11px; font-weight: 600; }
+      .switch-on { fill: #10b981; }
+      .switch-off { fill: #475569; }
+    </style>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="800" height="500" fill="url(#bg-gradient)" />
+
+  <!-- 顶部标题 -->
+  <rect x="0" y="0" width="800" height="50" fill="#1e293b" stroke="#475569" stroke-width="1" />
+  <g class="text-title">
+    <text x="20" y="30">配置管理</text>
+    <text x="700" y="30" class="text-label">设置 › 系统配置</text>
+  </g>
+
+  <!-- 左侧配置区域 -->
+  <rect x="0" y="50" width="400" height="450" fill="url(#panel-gradient)" stroke="#475569" stroke-width="1" />
+
+  <!-- 模型配置表格 -->
+  <rect x="20" y="70" width="360" height="150" fill="#0f172a" stroke="#475569" stroke-width="1" rx="6" />
+  <text x="30" y="90" class="text-title">模型配置</text>
+  <!-- 表头 -->
+  <rect x="30" y="100" width="340" height="20" fill="#334155" rx="4" />
+  <g class="text-highlight">
+    <text x="40" y="115">模型</text>
+    <text x="150" y="115">版本</text>
+    <text x="250" y="115">状态</text>
+  </g>
+  <!-- 表格行 -->
+  <g class="text">
+    <text x="40" y="140">DeepSeek-Coder</text>
+    <text x="150" y="140">33B</text>
+    <text x="250" y="140" fill="#10b981">● 在线</text>
+    <text x="40" y="160">GPT-4</text>
+    <text x="150" y="160">Turbo</text>
+    <text x="250" y="160" fill="#94a3b8">○ 离线</text>
+    <text x="40" y="180">Claude-3</text>
+    <text x="150" y="180">Opus</text>
+    <text x="250" y="180" fill="#10b981">● 在线</text>
+    <text x="40" y="200">Llama-3</text>
+    <text x="150" y="200">70B</text>
+    <text x="250" y="200" fill="#f59e0b">⚠️ 限制</text>
+  </g>
+
+  <!-- MCP Server列表 -->
+  <rect x="20" y="230" width="360" height="120" fill="#0f172a" stroke="#475569" stroke-width="1" rx="6" />
+  <text x="30" y="250" class="text-title">MCP Servers</text>
+  <g class="text">
+    <text x="40" y="275">🔗 filesystem-server</text>
+    <text x="40" y="295">🔗 github-server</text>
+    <text x="40" y="315">🔗 sqlite-server</text>
+    <text x="40" y="335">🔗 weather-server</text>
+  </g>
+
+  <!-- Sub-agent启用开关 -->
+  <rect x="20" y="360" width="360" height="80" fill="#0f172a" stroke="#475569" stroke-width="1" rx="6" />
+  <text x="30" y="380" class="text-title">Sub-agents</text>
+  <g class="text">
+    <text x="40" y="405">代码分析 Agent</text>
+    <circle cx="320" cy="400" r="8" class="switch-on" />
+    <text x="40" y="425">文档生成 Agent</text>
+    <circle cx="320" cy="420" r="8" class="switch-on" />
+    <text x="40" y="445">测试生成 Agent</text>
+    <circle cx="320" cy="440" r="8" class="switch-off" />
+  </g>
+
+  <!-- 右侧Prompt编辑器 -->
+  <rect x="400" y="50" width="400" height="450" fill="#0f172a" stroke="#475569" stroke-width="1" />
+  <text x="410" y="80" class="text-title">Prompt编辑器</text>
+  
+  <!-- 编辑器工具栏 -->
+  <rect x="410" y="90" width="380" height="30" fill="#334155" rx="6" />
+  <g class="text">
+    <text x="420" y="110">文件: system-prompt.txt</text>
+    <rect x="550" y="95" width="60" height="20" fill="#475569" rx="4" />
+    <text x="560" y="110">保存</text>
+    <rect x="620" y="95" width="60" height="20" fill="#475569" rx="4" />
+    <text x="630" y="110">重置</text>
+  </g>
+
+  <!-- 编辑器内容 -->
+  <rect x="410" y="130" width="380" height="300" fill="#0f172a" rx="6" />
+  <g class="text-code">
+    <text x="420" y="155" fill="#94a3b8"># 系统提示词</text>
+    <text x="420" y="175" fill="#94a3b8"># 用于指导AI助手的默认行为</text>
+    <text x="420" y="195"></text>
+    <text x="420" y="215" fill="#f1f5f9">你是一个专业的软件开发助手，擅长：</text>
+    <text x="420" y="235" fill="#f1f5f9">- 代码生成与重构</text>
+    <text x="420" y="255" fill="#f1f5f9">- 调试与问题排查</text>
+    <text x="420" y="275" fill="#f1f5f9">- 架构设计建议</text>
+    <text x="420" y="295"></text>
+    <text x="420" y="315" fill="#f1f5f9">请遵循以下原则：</text>
+    <text x="420" y="335" fill="#f1f5f9">1. 提供准确、可执行的代码</text>
+    <text x="420" y="355" fill="#f1f5f9">2. 解释关键设计决策</text>
+    <text x="420" y="375" fill="#f1f5f9">3. 考虑性能与安全性</text>
+    <text x="420" y="395" fill="#f1f5f9">4. 保持响应简洁</text>
+  </g>
+
+  <!-- 底部状态栏 -->
+  <rect x="410" y="440" width="380" height="30" fill="#334155" rx="6" />
+  <text x="420" y="460" class="text-label">字数: 256 | 行数: 12 | 编码: UTF-8</text>
+
+  <!-- 标注：模型配置表格 -->
+  <g class="annotation">
+    <rect x="200" y="60" width="100" height="30" class="annotation-box" />
+    <text x="210" y="80" class="annotation-text">模型配置表格</text>
+    <path d="M250,90 L250,100 L200,100 L200,150" stroke="#6366f1" stroke-width="2" fill="none" />
+  </g>
+
+  <!-- 标注：MCP Server列表 -->
+  <g class="annotation">
+    <rect x="200" y="240" width="100" height="30" class="annotation-box" />
+    <text x="210" y="260" class="annotation-text">MCP Server列表</text>
+    <path d="M250,270 L250,275 L200,275 L200,300" stroke="#6366f1" stroke-width="2" fill="none" />
+  </g>
+
+  <!-- 标注：Sub-agent启用开关 -->
+  <g class="annotation">
+    <rect x="200" y="370" width="120" height="30" class="annotation-box" />
+    <text x="210" y="390" class="annotation-text">Sub-agent启用开关</text>
+    <path d="M270,400 L270,405 L320,405" stroke="#10b981" stroke-width="2" fill="none" />
+  </g>
+
+  <!-- 标注：Prompt编辑器 -->
+  <g class="annotation">
+    <rect x="500" y="380" width="100" height="30" class="annotation-box" />
+    <text x="510" y="400" class="annotation-text">Prompt编辑器</text>
+    <path d="M550,380 L550,370 L500,370 L500,130" stroke="#6366f1" stroke-width="2" fill="none" />
+  </g>
+
+  <!-- 水印 -->
+  <text x="750" y="490" class="text-label" text-anchor="end">DeepSeek CLI Configuration</text>
+</svg>

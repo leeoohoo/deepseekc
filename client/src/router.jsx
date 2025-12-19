@@ -1,0 +1,43 @@
+import { createBrowserRouter } from 'react-router-dom';
+import Layout from './components/Layout';
+import Home from './pages/Home';
+import Docs from './pages/Docs';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import UiShowcase from './pages/UiShowcase';
+import Downloads from './pages/Downloads';
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Layout seoProps={{ title: 'DeepSeek CLI - AI-Powered Command Line Interface' }} />,
+    children: [
+      {
+        index: true,
+        element: <Home />,
+      },
+      {
+        path: 'docs',
+        element: <Docs />,
+      },
+      {
+        path: 'login',
+        element: <Login />,
+      },
+      {
+        path: 'register',
+        element: <Register />,
+      },
+      {
+        path: 'ui-showcase',
+        element: <UiShowcase />,
+      },
+      {
+        path: 'downloads',
+        element: <Downloads />,
+      },
+    ],
+  },
+]);
+
+export default router;

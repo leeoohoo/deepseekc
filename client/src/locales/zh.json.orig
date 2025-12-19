@@ -1,0 +1,545 @@
+{
+  "header": {
+    "logo": "Deepseek CLI",
+    "nav": {
+      "home": "首页",
+      "docs": "文档",
+      "uiShowcase": "UI展示",
+      "downloads": "下载"
+    },
+    "buttons": {
+      "login": "登录",
+      "getStarted": "开始使用"
+    }
+  },
+  "footer": {
+    "logo": "Deepseek CLI",
+    "description": "AI 驱动的终端助手，包含子代理市场、任务跟踪和 MCP 工具。通过智能自动化构建更智能。",
+    "headings": {
+      "product": "产品",
+      "community": "社区"
+    },
+    "links": {
+      "documentation": "文档",
+      "features": "功能",
+      "plugins": "插件",
+      "github": "GitHub"
+    },
+    "copyright": "© {{year}} Deepseek CLI。MIT 许可证。"
+  },
+  "home": {
+    "hero": {
+      "badge": "AI 驱动的终端助手",
+      "title1": "AI 驱动",
+      "title2": "终端助手",
+      "subtitle": "增强型 CLI，带有现代化可视化界面、子代理市场、任务跟踪和 MCP 工具",
+      "installLabel": "全局安装",
+      "copyButton": "复制",
+      "installCommand": "npm install -g @leeoohoo/deepseek-cli",
+      "cta": {
+        "getStarted": "开始使用",
+        "viewDocs": "查看文档"
+      },
+      "terminalLabel": "deepseek-cli"
+    },
+    "features": {
+      "heading": "核心功能",
+      "subheading": "您所需的一切，助您提升终端工作流程",
+      "items": {
+        "subAgentMarketplace": {
+          "title": "子代理市场",
+          "description": "60+ 插件，适用于 Python、React、Spring Boot、DevOps 等。通过现代化界面浏览和安装插件，也可使用 `/sub install <id>` 安装"
+        },
+        "taskManagement": {
+          "title": "任务管理",
+          "description": "内置任务跟踪与 MCP 工具。主代理协调，子代理执行。在桌面应用中查看任务进度和状态。"
+        },
+        "longRunningCommands": {
+          "title": "长时间运行命令",
+          "description": "tmux 集成，适用于不应超时的命令。使用 `tmux_run` / `tmux_capture_output`，并在 UI 中实时监控任务状态"
+        },
+        "autoSummary": {
+          "title": "现代化UI界面",
+          "description": "现代化的 Electron 桌面应用界面，提供直观的可视化操作和强大的功能集成"
+        }
+      }
+    },
+    "quickStart": {
+      "heading": "秒速开始",
+      "subheading": "立即安装并开始使用 DeepSeek CLI",
+      "steps": {
+        "install": {
+          "title": "1. 安装",
+          "command": "npm install -g @leeoohoo/deepseek-cli"
+        },
+        "startCli": {
+          "title": "2. 启动 CLI",
+          "command": "deepseekc chat",
+          "note": "或直接使用 npx 运行",
+          "npxCommand": "npx @leeoohoo/deepseek-cli chat"
+        },
+        "explore": {
+          "title": "3. 探索",
+          "items": {
+            "browseMarketplace": "浏览市场",
+            "installFirstPlugin": "安装第一个插件",
+            "startAutomating": "开始自动化任务"
+          }
+        }
+      }
+    },
+    "uiShowcase": {
+      "headingCore": "界面展示",
+      "headingGradient": "四种核心界面",
+      "subheading": "精心设计的 Electron 界面，覆盖 CLI 工具的所有核心使用场景",
+      "items": {
+        "dashboard": {
+          "title": "主页",
+          "description": "核心会话管理界面，展示当前对话、历史记录和实时交互面板。"
+        },
+        "fileBrowser": {
+          "title": "文件浏览器",
+          "description": "智能文件管理界面，支持目录树导航、代码高亮预览和变更记录可视化。"
+        },
+        "floatingIsland": {
+          "title": "浮动岛交互",
+          "description": "沉浸式交互面板，提供终端选择器、消息输入、UI 提示表单和快捷操作按钮。"
+        },
+        "configuration": {
+          "title": "配置管理",
+          "description": "集中式配置界面，管理模型参数、MCP 服务器、子代理启用和提示词编辑器。"
+        }
+      },
+      "viewAllDetails": "查看所有界面详情"
+    },
+    "uiPreview": {
+      "modernInterface": "现代化界面预览",
+      "visualExperience": "直观的可视化操作体验",
+      "description": "体验现代化的 Electron 桌面应用，提供强大的可视化功能集成。",
+      "viewAllInterfaces": "查看所有界面"
+    },
+    "moreCommandsHint": "更多命令请查看文档",
+    "architecture": {
+      "heading": "智能架构",
+      "description": "DeepSeek CLI 采用强大的多代理系统，并提供了现代化的 Electron 桌面应用界面，旨在实现最高效率和灵活性。",
+      "items": {
+        "mainAgent": {
+          "title": "主代理",
+          "description": "仅协调器，使用 <code>invoke_sub_agent</code>、任务管理器工具"
+        },
+        "subAgents": {
+          "title": "子代理",
+          "description": "完全 MCP 工具访问（文件系统、shell、任务）用于专门操作"
+        },
+        "configuration": {
+          "title": "配置",
+          "description": "配置文件路径：<code>~/.deepseek_cli/auth/models.yaml</code> 等"
+        }
+      },
+      "experience": "体验主代理与子代理之间的无缝协调"
+    },
+    "plugins": {
+      "heading": "丰富的插件生态系统",
+      "subheading": "选择 60+ 专业插件，满足各种开发需求",
+      "categories": {
+        "pythonDevelopment": "Python 开发",
+        "frontendReact": "前端 React",
+        "springBoot": "Spring Boot",
+        "cloudInfrastructure": "云基础设施",
+        "cicd": "CI/CD",
+        "securityScanning": "安全扫描",
+        "machineLearning": "机器学习",
+        "databaseDesign": "数据库设计"
+      },
+      "pluginsCount": "插件",
+      "browseAll": "浏览所有插件"
+    },
+    "cta": {
+      "heading": "准备好改变您的终端了吗？",
+      "subheading": "加入数千名已经通过 DeepSeek CLI 提升工作流程的开发人员",
+      "buttons": {
+        "getStartedFree": "免费开始",
+        "readDocumentation": "阅读文档"
+      }
+    },
+    "commands": {
+      "heading": "基本命令",
+      "subheading": "掌握这些强大命令，精通 CLI",
+      "items": {
+        "subMarketplace": {
+          "command": "/sub marketplace",
+          "description": "浏览 60+ 插件"
+        },
+        "subInstall": {
+          "command": "/sub install <id>",
+          "description": "安装插件"
+        },
+        "subAgents": {
+          "command": "/sub agents",
+          "description": "列出已安装代理"
+        },
+        "subRun": {
+          "command": "/sub run <agent> <task>",
+          "description": "运行子代理"
+        },
+        "prompt": {
+          "command": "/prompt",
+          "description": "查看/覆盖系统提示"
+        },
+        "tool": {
+          "command": "/tool [id]",
+          "description": "显示工具输出"
+        },
+        "reset": {
+          "command": "/reset",
+          "description": "清除会话"
+        }
+      }
+    }
+  },
+  "docs": {
+    "title": "文档",
+    "description": "DeepSeek CLI 完整指南 - model-cli-js 的增强版，包含子代理市场、任务跟踪和 MCP 工具。",
+    "seo": {
+      "title": "文档",
+      "description": "DeepSeek CLI 完整文档 - 安装、配置、命令、子代理系统、MCP 工具和故障排除。",
+      "keywords": "deepseek cli 文档, 子代理市场, MCP 工具, 任务管理, 安装指南"
+    },
+    "sidebar": {
+      "title": "目录",
+      "gettingStarted": "快速开始",
+      "uiInterface": "用户界面",
+      "installation": "安装",
+      "configuration": "配置",
+      "commandsReference": "命令参考",
+      "subAgentSystem": "子代理系统",
+      "mcpTools": "MCP 工具",
+      "taskManagement": "任务管理",
+      "troubleshooting": "故障排除",
+      "environmentVariables": "环境变量",
+      "githubButton": "GitHub 仓库"
+    },
+    "sections": {
+      "gettingStarted": {
+        "title": "快速开始",
+        "p1": "DeepSeek CLI 是 <code class=\"text-primary-300\">model-cli-js</code> 的增强版，包含子代理市场、任务跟踪和 MCP 工具集成。",
+        "p2": "它提供了一个 AI 驱动的终端助手，可以通过主代理协调复杂的工作流程，主代理将任务委托给具有完整工具访问权限的专门子代理。",
+        "p3": "架构分离了关注点：主代理处理协调和任务管理，而子代理可以访问文件系统、shell 和其他 MCP 工具以执行任务。"
+      },
+      "uiInterface": {
+        "title": "用户界面",
+        "description": "DeepSeek CLI 提供了现代化的 Electron 图形界面，使复杂的命令行操作变得直观易用。"
+      },
+      "installation": {
+        "title": "安装",
+        "description": "选择最适合您环境的安装方法："
+      },
+      "configuration": {
+        "title": "配置",
+        "description": "DeepSeek CLI 使用位于标准路径下的多个配置文件："
+      },
+      "commandsReference": {
+        "title": "命令参考",
+        "description": "交互模式下可用的完整聊天命令列表："
+      },
+      "subAgentSystem": {
+        "title": "子代理系统"
+      },
+      "mcpTools": {
+        "title": "MCP 工具"
+      },
+      "taskManagement": {
+        "title": "任务管理"
+      },
+      "troubleshooting": {
+        "title": "故障排除"
+      },
+      "environmentVariables": {
+        "title": "环境变量"
+      }
+    },
+    "installationCommands": {
+      "npmGlobalInstall": {
+        "title": "npm 全局安装",
+        "description": "需要系统已安装 Node.js 18+。"
+      },
+      "thenRun": {
+        "title": "然后运行",
+        "description": "启动 CLI 交互聊天模式。"
+      },
+      "alternativeNpx": {
+        "title": "替代方案：npx",
+        "description": "无需全局安装即可运行。"
+      },
+      "alternativeFromSource": {
+        "title": "替代方案：从源码安装",
+        "description": "克隆并从源代码运行。"
+      }
+    },
+    "configPaths": {
+      "models": "模型配置",
+      "systemPrompt": "系统提示覆盖",
+      "tasks": "每个工作空间的任务存储",
+      "subagents": "子代理安装状态"
+    },
+    "chatCommands": {
+      "marketplace": "列出可用插件",
+      "install": "安装插件",
+      "agents": "列出已安装代理 + 技能",
+      "run": "运行子代理（可选技能）",
+      "prompt": "查看/覆盖系统提示",
+      "tool": "显示最新工具输出",
+      "reset": "清除会话"
+    },
+    "table": {
+      "command": "命令",
+      "description": "描述",
+      "copy": "复制",
+      "variable": "变量"
+    },
+    "subAgentSystem": {
+      "mainAgent": {
+        "title": "主代理",
+        "description": "仅协调器，使用 <code class=\"text-primary-300\">invoke_sub_agent</code>、任务管理器工具，无 shell 访问权限。"
+      },
+      "subAgents": {
+        "title": "子代理",
+        "description": "完全 MCP 工具访问（文件系统、shell、tmux、任务）用于专门操作。"
+      }
+    },
+    "mcpTools": {
+      "mainAgentTools": "主代理工具",
+      "subAgentTools": "子代理工具"
+    },
+    "taskManagement": {
+      "addTask": "添加任务",
+      "addTaskDescription": "记录带有优先级和标签的新任务",
+      "updateProgress": "更新进度",
+      "updateProgressDescription": "跟踪任务状态并追加注释",
+      "complete": "完成",
+      "completeDescription": "标记任务为完成并交付成果"
+    },
+    "troubleshooting": {
+      "permissionErrors": "权限错误",
+      "missingTools": "缺少工具",
+      "mcpTimeout": "MCP 超时",
+      "longCommands": "长时间运行命令",
+      "historyTooLong": "历史记录过长"
+    },
+    "envVars": {
+      "deepseekApiKey": "模型的 API 密钥",
+      "logRequest": "启用请求日志记录",
+      "retry": "重试次数",
+      "mcpTimeout": "MCP 超时（默认 300000）",
+      "summaryTokens": "摘要阈值（默认 60000）",
+      "sessionRoot": "自定义会话根目录"
+    }
+  },
+  "uiShowcase": {
+    "hero": {
+      "badge": "DeepSeek CLI UI Showcase",
+      "title1": "UI界面展示",
+      "title2": "DeepSeek CLI 现代化桌面管理台",
+      "description": "DeepSeek CLI 提供现代化的 Electron 桌面管理界面，结合直观的可视化操作和强大的功能集成，让复杂任务变得简单直观。探索以下 8 个精心设计的界面，体验卓越的用户体验。"
+    },
+    "mainPages": {
+      "session": {
+        "title": "仪表板",
+        "subtitle": "会话仪表板",
+        "description": "DeepSeek CLI 主要管理界面，显示当前对话、历史记录和实时交互面板。",
+        "features": ["实时会话面板", "活动进程监控", "资源使用图表", "快速操作面板"]
+      },
+      "workspace": {
+        "title": "文件浏览器",
+        "subtitle": "工作区浏览器",
+        "description": "智能文件管理界面，支持目录树导航、代码高亮预览和变更记录可视化。",
+        "features": ["目录树导航", "代码高亮预览", "文件差异比较", "批量操作面板"]
+      },
+      "events": {
+        "title": "事件流",
+        "subtitle": "事件与日志",
+        "description": "实时事件流监控界面，显示系统日志、错误跟踪和通知中心。",
+        "features": ["实时事件流", "系统日志监控", "错误跟踪面板", "通知中心"]
+      }
+    },
+    "settingPages": {
+      "configuration": {
+        "title": "配置",
+        "subtitle": "系统配置",
+        "description": "集中式配置界面，用于管理模型参数、MCP 服务器和子代理设置。",
+        "features": ["模型参数设置", "MCP 服务器管理", "子代理启用/禁用", "提示词编辑器"]
+      },
+      "appearance": {
+        "title": "外观",
+        "subtitle": "UI 外观设置",
+        "description": "自定义界面主题、布局和视觉偏好。",
+        "features": ["主题选择", "布局自定义", "字体大小调整", "配色方案"]
+      },
+      "shortcuts": {
+        "title": "快捷键",
+        "subtitle": "键盘快捷键",
+        "description": "管理和自定义键盘快捷键，快速访问常用功能。",
+        "features": ["快捷键自定义", "预设配置文件", "冲突检测", "导入/导出"]
+      },
+      "plugins": {
+        "title": "插件",
+        "subtitle": "插件管理",
+        "description": "浏览、安装和管理市场中的插件。",
+        "features": ["市场浏览器", "插件安装", "更新管理", "依赖检查"]
+      },
+      "advanced": {
+        "title": "高级",
+        "subtitle": "高级设置",
+        "description": "面向高级用户和开发者的高级系统设置。",
+        "features": ["调试模式", "日志级别设置", "实验性功能", "API 配置"]
+      }
+    },
+    "techFeatures": {
+      "realTime": {
+        "title": "实时更新",
+        "description": "所有界面实时更新，提供即时反馈和实时数据可视化。"
+      },
+      "responsive": {
+        "title": "响应式设计",
+        "description": "自适应布局，在不同屏幕尺寸和分辨率下无缝工作。"
+      },
+      "keyboardNav": {
+        "title": "键盘导航",
+        "description": "完整的键盘导航支持，无需鼠标即可高效操作。"
+      },
+      "darkMode": {
+        "title": "深色模式",
+        "description": "内置深色主题，适合在低光环境中舒适使用。"
+      },
+      "search": {
+        "title": "全局搜索",
+        "description": "强大的搜索功能，覆盖所有界面和数据。"
+      },
+      "export": {
+        "title": "导出与分享",
+        "description": "轻松导出数据并与团队成员分享配置。"
+      }
+    },
+    "sectionTitles": {
+      "coreInterfaces": "核心界面",
+      "settingInterfaces": "设置界面",
+      "technicalFeatures": "技术特点",
+      "tryNow": "立即尝试",
+      "viewDetails": "查看详情"
+    },
+    "buttons": {
+      "viewDemo": "查看演示",
+      "tryOnline": "在线尝试",
+      "downloadApp": "下载应用",
+      "viewDocs": "查看文档",
+      "contactSales": "联系销售"
+    },
+    "modal": {
+      "demoTitle": "实时演示",
+      "demoDescription": "体验 DeepSeek CLI 界面实际操作。此交互式演示展示所有主要功能。",
+      "close": "关闭",
+      "fullscreen": "全屏",
+      "next": "下一步",
+      "previous": "上一步"
+    },
+    "cta": {
+      "heading": "准备好体验现代化 CLI 界面了吗？",
+      "subheading": "立即下载 DeepSeek CLI，通过直观的可视化管理改变您的终端工作流程。",
+      "buttons": {
+        "download": "立即下载",
+        "viewDemo": "查看实时演示"
+      }
+    }
+  },
+  "downloads": {
+    "hero": {
+      "badge": "下载桌面应用程序",
+      "title": "下载",
+      "subtitle": "下载适用于您平台的 DeepSeek CLI 桌面应用程序"
+    },
+    "downloads": {
+      "heading": "可用下载",
+      "subheading": "选择与您操作系统匹配的版本",
+      "macosArm64": {
+        "name": "macOS ARM64 (Apple Silicon)",
+        "requirements": "macOS 11+ 及以上，Apple Silicon 处理器"
+      },
+      "macosX64": {
+        "name": "macOS x64 (Intel)",
+        "requirements": "macOS 10.15+ 及以上，Intel 处理器"
+      },
+      "windowsX64": {
+        "name": "Windows x64",
+        "requirements": "Windows 10+ 64 位"
+      },
+      "fileSize": "文件大小",
+      "systemRequirements": "系统要求",
+      "downloadButton": "下载"
+    },
+    "installation": {
+      "heading": "安装说明",
+      "subheading": "按照这些简单步骤安装和运行 DeepSeek CLI",
+      "steps": {
+        "extract": {
+          "title": "1. 解压归档文件",
+          "description": "将下载的 ZIP 文件解压到您首选的位置（例如，macOS 上的应用程序文件夹，Windows 上的程序文件）"
+        },
+        "run": {
+          "title": "2. 运行应用程序",
+          "description": "从解压的文件夹启动应用程序。在 macOS 上，由于安全限制，您可能需要右键单击并选择打开"
+        },
+        "configure": {
+          "title": "3. 配置和享受",
+          "description": "在应用程序设置中配置您的 API 密钥和偏好设置，然后开始使用 DeepSeek CLI"
+        }
+      }
+    },
+    "requirements": {
+      "heading": "系统要求",
+      "subheading": "确保您的系统满足这些要求以获得最佳性能",
+      "memory": {
+        "title": "内存",
+        "description": "最低 8GB RAM，推荐 16GB 以获得更好性能"
+      },
+      "storage": {
+        "title": "存储",
+        "description": "至少 1GB 可用磁盘空间用于安装和缓存"
+      },
+      "network": {
+        "title": "网络",
+        "description": "需要稳定的互联网连接以访问 AI 模型"
+      },
+      "performance": {
+        "title": "性能",
+        "description": "现代多核处理器以确保流畅运行"
+      }
+    },
+    "npmInstall": {
+      "heading": "NPM 安装",
+      "description": "更喜欢命令行安装？使用 npm 获得纯终端体验",
+      "installLabel": "全局安装",
+      "copyButton": "复制",
+      "installCommand": "npm install -g @leeoohoo/deepseek-cli",
+      "startLabel": "启动 CLI",
+      "startCommand": "deepseekc chat",
+      "advantages": {
+        "heading": "NPM 优势",
+        "subheading": "为什么选择 npm 安装？",
+        "items": {
+          "automaticUpdates": "通过 npm 包管理器自动更新",
+          "easyInstallation": "使用单个命令轻松安装",
+          "globalAccess": "从任何终端全局访问",
+          "communitySupport": "完整的社区支持和文档"
+        }
+      }
+    },
+    "cta": {
+      "heading": "准备好开始了吗？",
+      "subheading": "加入数千名使用 DeepSeek CLI 提升工作流程的开发人员",
+      "buttons": {
+        "downloadNow": "立即下载",
+        "viewDocumentation": "查看文档"
+      }
+    }
+  }
+}

@@ -1,0 +1,386 @@
+import { motion } from 'framer-motion';
+import {
+  Download,
+  Apple,
+  Monitor,
+  Terminal,
+  Package,
+  CheckCircle,
+  ChevronRight,
+  Cpu,
+  HardDrive,
+  MemoryStick,
+  Globe,
+  Zap
+} from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+
+const Downloads = () => {
+  const { t } = useTranslation();
+
+  // Downloads data
+  const downloads = [
+    {
+      id: 'macos-arm64',
+      name: t('downloads.downloads.macosArm64.name'),
+      icon: <Apple className="w-10 h-10" />,
+      file: 'dist-macos-arm64.zip',
+      size: '~285 MB',
+      requirements: t('downloads.downloads.macosArm64.requirements'),
+      color: 'from-blue-500 to-cyan-500',
+      architecture: 'ARM64 (Apple Silicon)'
+    },
+    {
+      id: 'macos-x64',
+      name: t('downloads.downloads.macosX64.name'),
+      icon: <Apple className="w-10 h-10" />,
+      file: 'dist-macos-x64.zip',
+      size: '~295 MB',
+      requirements: t('downloads.downloads.macosX64.requirements'),
+      color: 'from-purple-500 to-pink-500',
+      architecture: 'x64 (Intel)'
+    },
+    {
+      id: 'windows-x64',
+      name: t('downloads.downloads.windowsX64.name'),
+      icon: <Monitor className="w-10 h-10" />,
+      file: 'dist-windows-x64.zip',
+      size: '~355 MB',
+      requirements: t('downloads.downloads.windowsX64.requirements'),
+      color: 'from-emerald-500 to-green-500',
+      architecture: 'x64'
+    }
+  ];
+
+  // Installation steps
+  const installationSteps = [
+    {
+      title: t('downloads.installation.steps.extract.title'),
+      description: t('downloads.installation.steps.extract.description'),
+      icon: <Package className="w-6 h-6" />
+    },
+    {
+      title: t('downloads.installation.steps.run.title'),
+      description: t('downloads.installation.steps.run.description'),
+      icon: <Terminal className="w-6 h-6" />
+    },
+    {
+      title: t('downloads.installation.steps.configure.title'),
+      description: t('downloads.installation.steps.configure.description'),
+      icon: <Cpu className="w-6 h-6" />
+    }
+  ];
+
+  // System requirements
+  const systemRequirements = [
+    {
+      title: t('downloads.requirements.memory.title'),
+      description: t('downloads.requirements.memory.description'),
+      icon: <MemoryStick className="w-5 h-5" />
+    },
+    {
+      title: t('downloads.requirements.storage.title'),
+      description: t('downloads.requirements.storage.description'),
+      icon: <HardDrive className="w-5 h-5" />
+    },
+    {
+      title: t('downloads.requirements.network.title'),
+      description: t('downloads.requirements.network.description'),
+      icon: <Globe className="w-5 h-5" />
+    },
+    {
+      title: t('downloads.requirements.performance.title'),
+      description: t('downloads.requirements.performance.description'),
+      icon: <Zap className="w-5 h-5" />
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-dark-950 via-dark-900 to-dark-950 pt-24">
+      {/* Hero Section */}
+      <section className="relative overflow-hidden py-16 px-4">
+        <div className="absolute inset-0 bg-gradient-to-r from-primary-900/20 via-transparent to-purple-900/20" />
+        <div className="container mx-auto relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-4xl mx-auto text-center"
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-900/30 border border-primary-800/50 backdrop-blur-sm mb-8">
+              <Download className="w-5 h-5 text-primary-400" />
+              <span className="text-primary-300 font-medium">{t('downloads.hero.badge')}</span>
+            </div>
+            
+            <h1 className="text-5xl md:text-7xl font-bold mb-6">
+              <span className="gradient-text">{t('downloads.hero.title')}</span>
+            </h1>
+            
+            <p className="text-xl md:text-2xl text-dark-300 mb-10 max-w-3xl mx-auto">
+              {t('downloads.hero.subtitle')}
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Downloads Grid */}
+      <section className="py-12 px-4">
+        <div className="container mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              <span className="gradient-text">{t('downloads.downloads.heading')}</span>
+            </h2>
+            <p className="text-xl text-dark-300 max-w-2xl mx-auto">
+              {t('downloads.downloads.subheading')}
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {downloads.map((item, index) => (
+              <motion.div
+                key={item.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="card p-8 hover:border-primary-800/50 transition-all duration-300 group"
+              >
+                <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-br ${item.color} mb-6`}>
+                  <div className="text-white">{item.icon}</div>
+                </div>
+                
+                <h3 className="text-2xl font-bold text-white mb-2">{item.name}</h3>
+                <p className="text-dark-400 mb-4">{item.architecture}</p>
+                
+                <div className="space-y-4 mb-6">
+                  <div className="flex items-center justify-between py-3 px-4 bg-dark-800/50 rounded-lg">
+                    <span className="text-dark-300">{t('downloads.downloads.fileSize')}</span>
+                    <span className="text-white font-semibold">{item.size}</span>
+                  </div>
+                  
+                  <div className="text-left">
+                    <h4 className="text-dark-300 text-sm font-semibold mb-2">
+                      {t('downloads.downloads.systemRequirements')}
+                    </h4>
+                    <p className="text-dark-400 text-sm">{item.requirements}</p>
+                  </div>
+                </div>
+                
+                <a
+                 href={`http://localhost:3001/doc/${item.file}`}
+                  className="btn-primary w-full inline-flex items-center justify-center gap-2 py-4"
+                  download
+                >
+                  <Download className="w-5 h-5" />
+                  {t('downloads.downloads.downloadButton')}
+                </a>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Installation Instructions */}
+      <section className="py-20 px-4 bg-dark-900/30">
+        <div className="container mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              <span className="gradient-text">{t('downloads.installation.heading')}</span>
+            </h2>
+            <p className="text-xl text-dark-300 max-w-2xl mx-auto">
+              {t('downloads.installation.subheading')}
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {installationSteps.map((step, index) => (
+              <motion.div
+                key={step.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="card p-8"
+              >
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="p-3 rounded-lg bg-primary-900/30">
+                    <div className="text-primary-400">{step.icon}</div>
+                  </div>
+                  <h3 className="text-2xl font-bold text-white">{step.title}</h3>
+                </div>
+                <p className="text-dark-300">{step.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* System Requirements */}
+      <section className="py-20 px-4">
+        <div className="container mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              <span className="gradient-text">{t('downloads.requirements.heading')}</span>
+            </h2>
+            <p className="text-xl text-dark-300 max-w-2xl mx-auto">
+              {t('downloads.requirements.subheading')}
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+            {systemRequirements.map((req, index) => (
+              <motion.div
+                key={req.title}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.3, delay: index * 0.05 }}
+                viewport={{ once: true }}
+                className="card p-6 text-center hover:border-primary-800/50 transition-all duration-300 group"
+              >
+                <div className="inline-flex p-3 rounded-full bg-dark-800/50 group-hover:bg-primary-900/30 transition-colors mb-4">
+                  <div className="text-primary-400 group-hover:text-primary-300">{req.icon}</div>
+                </div>
+                <h4 className="text-lg font-bold text-white mb-2">{req.title}</h4>
+                <p className="text-dark-300 text-sm">{req.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* NPM Installation Option */}
+      <section className="py-20 px-4 bg-dark-900/30">
+        <div className="container mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                <span className="gradient-text">{t('downloads.npmInstall.heading')}</span>
+              </h2>
+              <p className="text-xl text-dark-300 mb-8">
+                {t('downloads.npmInstall.description')}
+              </p>
+              
+              <div className="space-y-6">
+                <div className="code-block">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-dark-500 text-sm">{t('downloads.npmInstall.installLabel')}</span>
+                    <button className="text-primary-400 hover:text-primary-300 text-sm">
+                      {t('downloads.npmInstall.copyButton')}
+                    </button>
+                  </div>
+                  <code className="text-green-400 font-mono text-lg">
+                    {t('downloads.npmInstall.installCommand')}
+                  </code>
+                </div>
+                
+                <div className="code-block">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-dark-500 text-sm">{t('downloads.npmInstall.startLabel')}</span>
+                    <button className="text-primary-400 hover:text-primary-300 text-sm">
+                      {t('downloads.npmInstall.copyButton')}
+                    </button>
+                  </div>
+                  <code className="text-green-400 font-mono text-lg">
+                    {t('downloads.npmInstall.startCommand')}
+                  </code>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="card p-8"
+            >
+              <div className="flex items-center gap-4 mb-6">
+                <div className="p-3 rounded-lg bg-emerald-900/30">
+                  <Terminal className="w-10 h-10 text-emerald-400" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-white">{t('downloads.npmInstall.advantages.heading')}</h3>
+                  <p className="text-dark-300">{t('downloads.npmInstall.advantages.subheading')}</p>
+                </div>
+              </div>
+              
+              <ul className="space-y-4">
+                {[
+                  t('downloads.npmInstall.advantages.items.automaticUpdates'),
+                  t('downloads.npmInstall.advantages.items.easyInstallation'),
+                  t('downloads.npmInstall.advantages.items.globalAccess'),
+                  t('downloads.npmInstall.advantages.items.communitySupport')
+                ].map((item, index) => (
+                  <li key={index} className="flex items-start gap-3 text-dark-300">
+                    <CheckCircle className="w-5 h-5 text-emerald-500 mt-0.5 flex-shrink-0" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="py-20 px-4">
+        <div className="container mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="card max-w-4xl mx-auto p-12 text-center"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              {t('downloads.cta.heading')}
+            </h2>
+            <p className="text-xl text-dark-300 mb-10 max-w-2xl mx-auto">
+              {t('downloads.cta.subheading')}
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="#downloads"
+                className="btn-primary inline-flex items-center gap-2 px-8 py-4 text-lg"
+              >
+                <Download className="w-5 h-5" />
+                {t('downloads.cta.buttons.downloadNow')}
+              </a>
+              <a
+                href="/docs"
+                className="btn-secondary inline-flex items-center gap-2 px-8 py-4 text-lg"
+              >
+                <Terminal className="w-5 h-5" />
+                {t('downloads.cta.buttons.viewDocumentation')}
+              </a>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default Downloads;

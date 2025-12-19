@@ -1,0 +1,178 @@
+import { getTransporter } from './emailTransporter.js';
+import { logEvent } from '../middleware/errorHandler.js';
+import mongoose from 'mongoose';
+
+/**
+ * Send verification code email with retry mechanism
+ * @param {string} email - Recipient email address
+ * @param {string} code - 6-digit verification code
+ * @param {string} type - 'register' or 'login'
+ * @param {number} maxRetries - Maximum number of retry attempts (default: 3)
+ * @returns {Promise<Object>} - Nodemailer result
+ */
+export const sendVerificationCode = async (email, code, type = 'register', maxRetries = 3) => {
+  const transporter = getTransporter(); // Use singleton transporter
+  
+  const subject = type === 'register' 
+    ? 'Your DeepSeek CLI Verification Code - Registration'
+    : 'Your DeepSeek CLI Verification Code - Login';
+  
+  const action = type === 'register' ? 'complete your registration' : 'complete your login';
+  
+  const mailOptions = {
+    from: process.env.EMAIL_FROM || 'noreply@deepseek-cli.com',
+    to: email,
+    subject,
+    html: `
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e0e0e0; border-radius: 8px;">
+        <h2 style="color: #333; text-align: center;">DeepSeek CLI Verification</h2>
+        <p style="font-size: 16px; color: #555;">
+          Use the code below to ${action}:
+        </p>
+        <div style="text-align: center; margin: 30px 0;">
+          <span style="font-size: 32px; font-weight: bold; letter-spacing: 5px; color: #007bff; padding: 10px 20px; background-color: #f8f9fa; border-radius: 6px; border: 1px dashed #007bff;">
+            ${code}
+          </span>
+        </div>
+        <p style="font-size: 14px; color: #888;">
+          This code will expire in 10 minutes. If you didn't request this code, please ignore this email.
+        </p>
+        <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 30px 0;" />
+        <p style="font-size: 12px; color: #999; text-align: center;">
+          © ${new Date().getFullYear()} DeepSeek CLI. All rights reserved.
+        </p>
+      </div>
+    `,
+    text: `Your DeepSeek CLI verification code is: ${code}. Use this code to ${action}. This code will expire in 10 minutes.`
+  };
+
+  let lastError;
+  
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    try {
+      const info = await transporter.sendMail(mailOptions);
+      
+      // Log successful email sending
+      logEvent('verification_code_sent', {
+        email,
+        type,
+        messageId: info.messageId,
+        attempt
+      });
+      
+      console.log(`✅ Verification code sent to ${email} (${type}): ${info.messageId}`);
+      return info;
+    } catch (error) {
+      lastError = error;
+      
+      // Log failed attempt
+      logEvent('verification_code_failed', {
+        email,
+        type,
+        attempt,
+        error: error.message,
+        errorName: error.name
+      });
+      
+      console.error(`❌ Attempt ${attempt}/${maxRetries} failed to send verification code to ${email}:`, error.message);
+      
+      // If this is the last attempt, throw the error
+      if (attempt === maxRetries) {
+        console.error(`❌ All ${maxRetries} attempts failed for ${email}`);
+        throw new Error(`Failed to send verification email after ${maxRetries} attempts: ${error.message}`);
+      }
+      
+      // Exponential backoff: wait 1s, then 2s, then 4s, etc.
+      const delayMs = Math.pow(2, attempt - 1) * 1000;
+      console.log(`⏳ Retrying in ${delayMs / 1000}s... (attempt ${attempt + 1}/${maxRetries})`);
+      await new Promise(resolve => setTimeout(resolve, delayMs));
+    }
+  }
+  
+  // This should never be reached due to the throw in the loop
+  throw lastError;
+};
+
+/**
+ * Send verification code and handle the complete flow (with transaction consistency)
+ * This function ensures email is sent before storing verification code
+ * @param {string} email - Recipient email address
+ * @param {string} code - 6-digit verification code
+ * @param {string} type - 'register' or 'login'
+ * @param {Date} expiresAt - Expiration time for the code
+ * @param {Function} storeCallback - Callback to store verification code after successful send
+ * @returns {Promise<Object>} - Result object with success status and details
+ */
+export const sendAndStoreVerificationCode = async (
+  email, 
+  code, 
+  type = 'register', 
+  expiresAt = new Date(Date.now() + 10 * 60 * 1000),
+  storeCallback = null
+) => {
+  try {
+    // First, try to send the email
+    const emailResult = await sendVerificationCode(email, code, type);
+    
+    // If storeCallback is provided and email sent successfully, store the verification code
+    if (storeCallback) {
+      try {
+        console.log(`🔍 Mongoose connection state: readyState=${mongoose.connection.readyState}, db=${mongoose.connection.db ? 'present' : 'absent'}`);
+        await storeCallback();
+        logEvent('verification_code_stored', { email, type, code });
+      } catch (storeError) {
+        // Log storage failure but don't fail the request (email was sent successfully)
+        logEvent('verification_code_storage_failed', {
+          email,
+          type,
+          code,
+          error: storeError.message,
+          stack: storeError.stack
+        });
+        console.error(`⚠️ Verification code sent to ${email} but storage failed:`, storeError.message);
+      }
+    }
+    
+    return {
+      success: true,
+      message: 'Verification code sent successfully',
+      emailResult,
+      expiresAt: expiresAt.toISOString()
+    };
+  } catch (emailError) {
+    // Email sending failed, don't store the verification code
+    logEvent('verification_code_flow_failed', {
+      email,
+      type,
+      code,
+      error: emailError.message,
+      stored: false
+    });
+    
+    throw new Error(`Verification code flow failed: ${emailError.message}`);
+  }
+};
+
+/**
+ * Generate a 6-digit verification code
+ * @returns {string} 6-digit code
+ */
+export const generateVerificationCode = () => {
+  return Math.floor(100000 + Math.random() * 900000).toString();
+};
+
+/**
+ * Calculate expiration time for verification code
+ * @param {number} minutes - Minutes until expiration (default: 10)
+ * @returns {Date} Expiration date
+ */
+export const calculateExpirationTime = (minutes = 10) => {
+  return new Date(Date.now() + minutes * 60 * 1000);
+};
+
+export default {
+  sendVerificationCode,
+  sendAndStoreVerificationCode,
+  generateVerificationCode,
+  calculateExpirationTime
+};

@@ -1,0 +1,11 @@
+--- zh.json
++++ zh.json
+@@ -57,7 +57,7 @@
+         "longRunningCommands": {
+           "title": "长时间运行命令",
+-          "description": "tmux 集成，适用于不应超时的命令。使用 `tmux_run` / `tmux_capture_output`"
++          "description": "tmux 集成，适用于不应超时的命令。使用 `tmux_run` / `tmux_capture_output`，并在 UI 中实时监控任务状态"
+         },
+ 
+ 
+ 

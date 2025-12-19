@@ -1,0 +1,14 @@
+--- en.json
++++ en.json
+@@ -301,10 +301,11 @@
+   "uiShowcase": {
+     "sectionTitles": {
+       "coreInterfaces": "Core Interfaces",
++      "mainPages": "Core Interfaces",
+       "mainPagesDescription": "Three core interfaces for daily operations: session management, workspace browsing, and event monitoring",
+       "settingInterfaces": "Setting Interfaces",
+       "settingInterfacesDescription": "Comprehensive system configuration and management functions to meet the deep customization needs of advanced users and system administrators",
+       "technicalFeatures": "Technical Features",
+       "technicalFeaturesDescription": "DeepSeek CLI desktop management console adopts modern technology stack and design concepts to provide excellent user experience",
+       "tryNow": "Try Now",
+ 

@@ -1,0 +1,349 @@
+{
+  "header": {
+    "logo": "Deepseek CLI",
+    "nav": {
+      "home": "Home",
+      "docs": "Docs",
+      "uiShowcase": "UI Showcase"
+    },
+    "buttons": {
+      "login": "Login",
+      "getStarted": "Get Started"
+    }
+  },
+  "footer": {
+    "logo": "Deepseek CLI",
+    "description": "AI-powered terminal assistant with sub-agent marketplace, task tracking, and MCP tools. Build smarter with intelligent automation.",
+    "headings": {
+      "product": "Product",
+      "community": "Community"
+    },
+    "links": {
+      "documentation": "Documentation",
+      "features": "Features",
+      "plugins": "Plugins",
+      "github": "GitHub"
+    },
+    "copyright": "© {{year}} Deepseek CLI. MIT License."
+  },
+  "home": {
+    "hero": {
+      "badge": "AI-Powered Terminal Assistant",
+      "title1": "AI-Powered",
+      "title2": "Terminal Assistant",
+      "subtitle": "Enhanced CLI with modern visual interface, sub-agent marketplace, task tracking, and MCP tools",
+      "installLabel": "Install globally",
+      "copyButton": "Copy",
+      "installCommand": "npm install -g @leeoohoo/deepseek-cli",
+      "cta": {
+        "getStarted": "Get Started",
+        "viewDocs": "View Docs"
+      },
+      "terminalLabel": "deepseek-cli"
+    },
+    "features": {
+      "heading": "Core Features",
+      "headingCore": "Core",
+      "headingGradient": "Features",
+      "subheading": "Everything you need to supercharge your terminal workflow",
+      "items": {
+        "subAgentMarketplace": {
+          "title": "Sub-Agent Marketplace",
+          "description": "60+ plugins for Python, React, Spring Boot, DevOps, etc. Browse and install plugins through the modern visual interface, or use `/sub install <id>`"
+        },
+        "taskManagement": {
+          "title": "Task Management",
+          "description": "Built-in task tracking with MCP tools. Main agent orchestrates, sub-agents execute. View task progress and status in the desktop app."
+        },
+        "longRunningCommands": {
+          "title": "Long-Running Commands",
+          "description": "tmux integration for commands that shouldn't timeout. Use `tmux_run` / `tmux_capture_output`, and monitor task status in real-time through the UI."
+        },
+        "autoSummary": {
+          "title": "Modern UI Interface",
+          "description": "Modern Electron desktop application interface providing intuitive visual operations and powerful feature integration"
+        }
+      }
+    },
+    "quickStart": {
+      "heading": "Get Started in Seconds",
+      "headingCore": "Get Started in",
+      "headingGradient": "Seconds",
+      "subheading": "Install and start using DeepSeek CLI immediately",
+      "steps": {
+        "install": {
+          "title": "1. Install",
+          "command": "npm install -g @leeoohoo/deepseek-cli"
+        },
+        "startCli": {
+          "title": "2. Start CLI",
+          "command": "deepseekc chat",
+          "note": "or run directly with npx",
+          "npxCommand": "npx @leeoohoo/deepseek-cli chat"
+        },
+        "explore": {
+          "title": "3. Explore",
+          "items": {
+            "browseMarketplace": "Browse the marketplace",
+            "installFirstPlugin": "Install your first plugin",
+            "startAutomating": "Start automating tasks"
+          }
+        }
+      }
+    },
+    "uiShowcase": {
+      "headingCore": "UI Showcase",
+      "headingGradient": "Four Core Interfaces",
+      "subheading": "Carefully designed Electron interfaces covering all core usage scenarios of CLI tools",
+      "items": {
+        "dashboard": {
+          "title": "Dashboard",
+          "description": "Core session management interface displaying current conversations, history, and real-time interaction panels."
+        },
+        "fileBrowser": {
+          "title": "File Browser",
+          "description": "Intelligent file management interface supporting directory tree navigation, code highlighting preview, and change record visualization."
+        },
+        "floatingIsland": {
+          "title": "Floating Island Interaction",
+          "description": "Immersive interaction panel providing terminal selector, message input, UI prompt forms, and quick action buttons."
+        },
+        "configuration": {
+          "title": "Configuration Management",
+          "description": "Centralized configuration interface managing model parameters, MCP servers, sub-agent enabling, and prompt editor."
+        }
+      },
+      "viewAllDetails": "View All Interface Details"
+    },
+    "commands": {
+      "heading": "Essential Commands",
+      "subheading": "Master the CLI with these powerful commands",
+      "items": {
+        "subMarketplace": {
+          "command": "/sub marketplace",
+          "description": "Browse 60+ plugins"
+        },
+        "subInstall": {
+          "command": "/sub install <id>",
+          "description": "Install a plugin"
+        },
+        "subAgents": {
+          "command": "/sub agents",
+          "description": "List installed agents"
+        },
+        "subRun": {
+          "command": "/sub run <agent> <task>",
+          "description": "Run a sub-agent"
+        },
+        "prompt": {
+          "command": "/prompt",
+          "description": "View/override system prompt"
+        },
+        "tool": {
+          "command": "/tool [id]",
+          "description": "Show tool outputs"
+        },
+        "reset": {
+          "command": "/reset",
+          "description": "Clear session"
+        }
+      }
+    },
+    "uiPreview": {
+      "modernInterface": "Modern Interface Preview",
+      "visualExperience": "Intuitive Visual Operation Experience",
+      "description": "Experience modern Electron desktop application with powerful visual feature integration.",
+      "viewAllInterfaces": "View All Interfaces"
+    },
+    "moreCommandsHint": "More commands available in documentation"
+  },
+  "architecture": {
+    "heading": "Intelligent Architecture",
+    "description": "DeepSeek CLI uses a powerful multi-agent system and provides a modern Electron desktop application interface, designed for maximum efficiency and flexibility.",
+    "items": {
+      "mainAgent": {
+        "title": "Main Agent",
+        "description": "Orchestrator only, uses <code>invoke_sub_agent</code>, task manager tools"
+      },
+      "subAgents": {
+        "title": "Sub-Agents",
+        "description": "Full MCP tool access (filesystem, shell, tasks) for specialized operations"
+      },
+      "configuration": {
+        "title": "Configuration",
+        "description": "Config paths: <code>~/.deepseek_cli/auth/models.yaml</code>, etc."
+      }
+    },
+    "experience": "Experience seamless orchestration between main and sub-agents"
+  },
+  "plugins": {
+    "heading": "Rich Plugin Ecosystem",
+    "subheading": "Choose from 60+ specialized plugins for every development need",
+    "categories": {
+      "pythonDevelopment": "Python Development",
+      "frontendReact": "Frontend React",
+      "springBoot": "Spring Boot",
+      "cloudInfrastructure": "Cloud Infrastructure",
+      "cicd": "CI/CD",
+      "securityScanning": "Security Scanning",
+      "machineLearning": "Machine Learning",
+      "databaseDesign": "Database Design"
+    },
+    "pluginsCount": "plugins",
+    "browseAll": "Browse All Plugins"
+  },
+  "cta": {
+    "heading": "Ready to Transform Your Terminal?",
+    "subheading": "Join thousands of developers who have already supercharged their workflow with DeepSeek CLI",
+    "buttons": {
+      "getStartedFree": "Get Started Free",
+      "readDocumentation": "Read Documentation"
+    }
+  },
+  "docs": {
+    "title": "Documentation",
+    "description": "Comprehensive guide to DeepSeek CLI - an enhanced fork of model-cli-js with sub-agent marketplace, task tracking, and MCP tools.",
+    "seo": {
+      "title": "Documentation",
+      "description": "Complete documentation for DeepSeek CLI - installation, configuration, commands, sub-agent system, MCP tools, and troubleshooting.",
+      "keywords": "deepseek cli documentation, sub-agent marketplace, MCP tools, task management, installation guide"
+    },
+    "sidebar": {
+      "title": "Contents",
+      "gettingStarted": "Getting Started",
+      "uiInterface": "UI Interface",
+      "installation": "Installation",
+      "configuration": "Configuration",
+      "commandsReference": "Commands Reference",
+      "subAgentSystem": "Sub-Agent System",
+      "mcpTools": "MCP Tools",
+      "taskManagement": "Task Management",
+      "troubleshooting": "Troubleshooting",
+      "environmentVariables": "Environment Variables",
+      "githubButton": "GitHub Repository"
+    },
+    "sections": {
+      "gettingStarted": {
+        "title": "Getting Started",
+        "p1": "DeepSeek CLI is an enhanced fork of <code class=\"text-primary-300\">model-cli-js</code> with a sub-agent marketplace, task tracking, and MCP tools integration.",
+        "p2": "It provides an AI-powered terminal assistant that can orchestrate complex workflows through a main agent that delegates to specialized sub-agents with full tool access.",
+        "p3": "The architecture separates concerns: the main agent handles orchestration and task management, while sub-agents have access to filesystem, shell, and other MCP tools for execution."
+      },
+      "uiInterface": {
+        "title": "UI Interface",
+        "description": "DeepSeek CLI provides a modern Electron graphical interface that makes complex command-line operations intuitive and easy to use."
+      },
+      "installation": {
+        "title": "Installation",
+        "description": "Choose the installation method that best fits your environment:"
+      },
+      "configuration": {
+        "title": "Configuration",
+        "description": "DeepSeek CLI uses several configuration files located in standard paths:"
+      },
+      "commandsReference": {
+        "title": "Commands Reference",
+        "description": "Complete list of chat commands available in interactive mode:"
+      },
+      "subAgentSystem": {
+        "title": "Sub-Agent System"
+      },
+      "mcpTools": {
+        "title": "MCP Tools"
+      },
+      "taskManagement": {
+        "title": "Task Management"
+      },
+      "troubleshooting": {
+        "title": "Troubleshooting"
+      },
+      "environmentVariables": {
+        "title": "Environment Variables"
+      }
+    },
+    "installationCommands": {
+      "npmGlobalInstall": {
+        "title": "npm global install",
+        "description": "Requires Node.js 18+ installed on your system."
+      },
+      "thenRun": {
+        "title": "Then run",
+        "description": "Start the CLI interactive chat mode."
+      },
+      "alternativeNpx": {
+        "title": "Alternative: npx",
+        "description": "Run without global installation."
+      },
+      "alternativeFromSource": {
+        "title": "Alternative: from source",
+        "description": "Clone and run from source code."
+      }
+    },
+    "configPaths": {
+      "models": "Model configurations",
+      "systemPrompt": "System prompt overrides",
+      "tasks": "Per-workspace task store",
+      "subagents": "Sub-agent install state"
+    },
+    "chatCommands": {
+      "marketplace": "List available plugins",
+      "install": "Install a plugin",
+      "agents": "List installed agents + skills",
+      "run": "Run sub-agent with optional skills",
+      "prompt": "View/override system prompt",
+      "tool": "Show latest tool outputs",
+      "reset": "Clear session"
+    },
+    "table": {
+      "command": "Command",
+      "description": "Description",
+      "copy": "Copy",
+      "variable": "Variable"
+    },
+    "subAgentSystem": {
+      "mainAgent": {
+        "title": "Main Agent",
+        "description": "Orchestrator only, uses <code class=\"text-primary-300\">invoke_sub_agent</code>, task manager tools, no shell access."
+      },
+      "subAgents": {
+        "title": "Sub-Agents",
+        "description": "Full MCP tool access (filesystem, shell, tmux, tasks) for specialized operations."
+      }
+    },
+    "mcpTools": {
+      "mainAgentTools": "Main Agent Tools",
+      "subAgentTools": "Sub-Agent Tools"
+    },
+    "taskManagement": {
+      "addTask": "Add Task",
+      "addTaskDescription": "Record new tasks with priority and tags",
+      "updateProgress": "Update Progress",
+      "updateProgressDescription": "Track task status and append notes",
+      "complete": "Complete",
+      "completeDescription": "Mark tasks as done with deliverables"
+    },
+    "troubleshooting": {
+      "permissionErrors": "Permission errors",
+      "missingTools": "Missing tools",
+      "mcpTimeout": "MCP timeout",
+      "longCommands": "Long commands",
+      "historyTooLong": "History too long"
+    },
+    "envVars": {
+      "deepseekApiKey": "API key for models",
+      "logRequest": "Enable request logging",
+      "retry": "Number of retries",
+      "mcpTimeout": "MCP timeout (default 300000)",
+      "summaryTokens": "Summary threshold (default 60000)",
+      "sessionRoot": "Custom session root directory"
+    }
+  },
+  "uiShowcase": {
+    "hero": {
+      "badge": "DeepSeek CLI UI Showcase",
+      "title1": "UI Interface Showcase",
+      "title2": "DeepSeek CLI Modern Desktop Management Console",
+      "description": "DeepSeek CLI provides a modern Electron desktop management interface, combining intuitive visual operations and powerful feature integration, making complex tasks simple and intuitive. Explore the following 8 carefully designed interfaces for an exceptional user experience."
+    }
+  }
+}
