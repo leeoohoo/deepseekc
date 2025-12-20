@@ -1,6 +1,6 @@
 # Deepseek CLI Website
 
-Official website for [Deepseek CLI](https://github.com/leeoohoo/deepseek-cli) - AI-powered terminal assistant with sub-agent marketplace, task tracking, and MCP tools.
+Official website for [Deepseek CLI](https://github.com/leeoohoo/deepseekc) - AI-powered terminal assistant with sub-agent marketplace, task tracking, and MCP tools.
 
 ## Features
 

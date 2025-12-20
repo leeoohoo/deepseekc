@@ -24,8 +24,8 @@ const Downloads = () => {
       id: 'macos-arm64',
       name: t('downloads.downloads.macosArm64.name'),
       icon: <Apple className="w-10 h-10" />,
-      file: 'https://github.com/leeoohoo/deepseek_cli/releases/download/1.0.5.1_tag/Deepseek.UI-0.1.1-mac-arm64.dmg',
-      size: '~285 MB',
+      file: 'https://github.com/leeoohoo/deepseekc/releases/download/v1.0.0/dist-macos-arm64.zip',
+      size: '~302 MB',
       requirements: t('downloads.downloads.macosArm64.requirements'),
       color: 'from-blue-500 to-cyan-500',
       architecture: 'ARM64 (Apple Silicon)'
@@ -34,8 +34,8 @@ const Downloads = () => {
       id: 'macos-x64',
       name: t('downloads.downloads.macosX64.name'),
       icon: <Apple className="w-10 h-10" />,
-      file: 'https://github.com/leeoohoo/deepseek_cli/releases/download/1.0.5.1_tag/Deepseek.UI-0.1.1-mac-x64.dmg',
-      size: '~295 MB',
+      file: 'https://github.com/leeoohoo/deepseekc/releases/download/v1.0.0/dist-macos-x64.zip',
+      size: '~316 MB',
       requirements: t('downloads.downloads.macosX64.requirements'),
       color: 'from-purple-500 to-pink-500',
       architecture: 'x64 (Intel)'
@@ -44,8 +44,8 @@ const Downloads = () => {
       id: 'windows-x64',
       name: t('downloads.downloads.windowsX64.name'),
       icon: <Monitor className="w-10 h-10" />,
-      file: 'https://github.com/leeoohoo/deepseek_cli/releases/download/1.0.5.1_tag/Deepseek.UI-0.1.1-win-x64.exe',
-      size: '~355 MB',
+      file: 'https://github.com/leeoohoo/deepseekc/releases/download/v1.0.0/dist-windows-x64.zip',
+      size: '~372 MB',
       requirements: t('downloads.downloads.windowsX64.requirements'),
       color: 'from-emerald-500 to-green-500',
       architecture: 'x64'

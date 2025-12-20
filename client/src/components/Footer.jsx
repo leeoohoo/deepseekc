@@ -32,7 +32,7 @@ export default function Footer() {
             <h4 className="font-semibold mb-4">{t('footer.headings.community')}</h4>
             <ul className="space-y-2 text-sm text-dark-400">
               <li>
-                <a href="https://github.com/leeoohoo/deepseek-cli" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-2">
+                <a href="https://github.com/leeoohoo/deepseekc" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-2">
                   <Github className="w-4 h-4" /> {t('footer.links.github')}
                 </a>
               </li>

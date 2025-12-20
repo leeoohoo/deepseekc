@@ -98,7 +98,7 @@ export default function Header() {
               </Link>
             ))}
             <a
-              href="https://github.com/leeoohoo/deepseek-cli"
+              href="https://github.com/leeoohoo/deepseekc"
               target="_blank"
               rel="noopener noreferrer"
               className="text-dark-300 hover:text-white transition-colors"

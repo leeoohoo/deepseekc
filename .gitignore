@@ -81,3 +81,11 @@ temp/
 *~
 ~$*
 *.bak
+# 备份文件 (patch/merge)
+*.orig
+*.rej
+*.backup
+*.backup[0-9]*
+*.tmp.orig
+*.tmp.rej
+

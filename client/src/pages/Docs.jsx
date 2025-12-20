@@ -78,8 +78,8 @@ const Docs = () => {
     },
     {
       title: t('docs.installationCommands.alternativeFromSource.title'),
-      command: `git clone https://github.com/leeoohoo/deepseek-cli
-cd deepseek-cli
+      command: `git clone https://github.com/leeoohoo/deepseekc
+cd deepseekc
 npm install
 node src/cli.js chat`,
       description: t('docs.installationCommands.alternativeFromSource.description')
@@ -229,7 +229,7 @@ node src/cli.js chat`,
               
               <div className="mt-8 pt-6 border-t border-dark-800">
                 <a
-                  href="https://github.com/leeoohoo/deepseek-cli"
+                  href="https://github.com/leeoohoo/deepseekc"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-secondary w-full flex items-center justify-center gap-2"

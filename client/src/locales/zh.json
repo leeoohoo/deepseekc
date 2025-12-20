@@ -199,7 +199,7 @@
   },
   "docs": {
     "title": "文档",
-    "description": "DeepSeek CLI 完整指南 - model-cli-js 的增强版，包含子代理市场、任务跟踪和 MCP 工具。",
+    "description": "DeepSeek CLI 完整指南 - 包含子代理市场、任务跟踪和 MCP 工具。",
     "seo": {
       "title": "文档",
       "description": "DeepSeek CLI 完整文档 - 安装、配置、命令、子代理系统、MCP 工具和故障排除。",
@@ -222,7 +222,7 @@
     "sections": {
       "gettingStarted": {
         "title": "快速开始",
-        "p1": "DeepSeek CLI 是 <code class=\"text-primary-300\">model-cli-js</code> 的增强版，包含子代理市场、任务跟踪和 MCP 工具集成。",
+        "p1": "DeepSeek CLI 是一个 AI 驱动的终端助手，包含子代理市场、任务跟踪和 MCP 工具集成。",
         "p2": "它提供了一个 AI 驱动的终端助手，可以通过主代理协调复杂的工作流程，主代理将任务委托给具有完整工具访问权限的专门子代理。",
         "p3": "架构分离了关注点：主代理处理协调和任务管理，而子代理可以访问文件系统、shell 和其他 MCP 工具以执行任务。"
       },
